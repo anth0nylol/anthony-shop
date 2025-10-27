@@ -9,6 +9,7 @@
   <style>
     :root { --bg:#0b0d12; --text:#e6e9ef; --muted:#9aa3b2; --accent:#7aa2ff; --accent2:#88f0ff; }
     *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
     header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05)}
     header h1{margin:0;font-size:20px;letter-spacing:.5px}
@@ -30,6 +31,47 @@
     .btn:hover{border-color:rgba(122,162,255,.4);color:white}
 
     footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
+
+    /* Pricing Section */
+    .pricing-section{padding:80px 20px 120px;background:linear-gradient(180deg,rgba(15,17,21,.5),var(--bg))}
+    .pricing-container{max-width:1200px;margin:0 auto}
+    .pricing-header{text-align:center;margin-bottom:40px}
+    .pricing-header h2{font-size:clamp(32px,5vw,48px);margin:0 0 16px 0;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .pricing-header p{color:var(--muted);font-size:18px;max-width:600px;margin:0 auto}
+    
+    .pricing-benefits{display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin:40px auto;max-width:900px}
+    .benefit-item{color:var(--text);padding:12px 20px;background:rgba(122,162,255,.08);border:1px solid rgba(122,162,255,.15);border-radius:8px;font-size:15px}
+    
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;margin-top:60px;max-width:1100px;margin-left:auto;margin-right:auto}
+    
+    .pricing-card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:32px;position:relative;transition:transform .3s,border-color .3s,box-shadow .3s}
+    .pricing-card:hover{transform:translateY(-8px);border-color:rgba(122,162,255,.3);box-shadow:0 12px 40px rgba(122,162,255,.15)}
+    
+    .pricing-card.featured{border:2px solid var(--accent);box-shadow:0 8px 32px rgba(122,162,255,.2);transform:scale(1.05)}
+    .pricing-card.featured:hover{transform:scale(1.05) translateY(-8px)}
+    
+    .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent),var(--accent2));color:var(--bg);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.5px}
+    .badge.lifetime{background:linear-gradient(90deg,#a78bfa,var(--accent2))}
+    
+    .plan-header{text-align:center;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.05)}
+    .plan-header h3{font-size:24px;color:var(--text);margin:0 0 16px 0}
+    
+    .price{display:flex;align-items:baseline;justify-content:center;gap:4px}
+    .price .amount{font-size:48px;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .price .period{color:var(--muted);font-size:16px}
+    
+    .savings{color:var(--accent);font-size:14px;margin-top:8px;font-weight:600}
+    
+    .plan-features{margin:24px 0}
+    .feature{color:var(--muted);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:15px}
+    .feature:last-child{border-bottom:none}
+    
+    .pricing-btn{width:100%;padding:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:8px}
+    .pricing-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(122,162,255,.4)}
+    
+    .trial-note{text-align:center;color:var(--muted);font-size:12px;margin-top:12px}
+    
+    .pricing-footer{text-align:center;margin-top:60px;color:var(--muted);font-size:14px;max-width:700px;margin-left:auto;margin-right:auto}
 
     /* Modal Styles */
     .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:1000;overflow-y:auto;padding:40px 20px}
@@ -61,6 +103,13 @@
       .modal-body h2{font-size:24px}
       .modal-section h3{font-size:18px}
       .modal-close{top:10px;right:10px;width:36px;height:36px;font-size:20px}
+      
+      .pricing-section{padding:60px 20px 80px}
+      .pricing-benefits{flex-direction:column;align-items:stretch}
+      .pricing-grid{grid-template-columns:1fr;gap:24px}
+      .pricing-card.featured{transform:scale(1);border-width:2px}
+      .pricing-card.featured:hover{transform:translateY(-8px)}
+      .price .amount{font-size:40px}
     }
   </style>
 </head>
@@ -70,6 +119,7 @@
     <nav>
       <a href="/">Home</a>
       <a href="#catalog">Catalog</a>
+      <a href="#pricing">Pricing</a>
       <a href="mailto:support@anthony.trade">Contact</a>
     </nav>
   </header>
@@ -120,6 +170,91 @@
       </div>
     </div>
   </main>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing-section">
+    <div class="pricing-container">
+      <div class="pricing-header">
+        <h2>Professional Tools. Retail Price.</h2>
+        <p>Get institutional-level indicators without institutional fees. 7-day risk-free trial on all plans.</p>
+      </div>
+
+      <div class="pricing-benefits">
+        <div class="benefit-item">✓ All 4 Professional Indicators</div>
+        <div class="benefit-item">✓ Automatic TradingView Access</div>
+        <div class="benefit-item">✓ Private Discord Community</div>
+        <div class="benefit-item">✓ Regular Updates & New Features</div>
+        <div class="benefit-item">✓ Priority Support & Setup Assistance</div>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Monthly Plan -->
+        <div class="pricing-card">
+          <div class="plan-header">
+            <h3>Monthly</h3>
+            <div class="price">
+              <span class="amount">$69</span>
+              <span class="period">/month</span>
+            </div>
+          </div>
+          <div class="plan-features">
+            <div class="feature">✓ All indicators included</div>
+            <div class="feature">✓ Private Discord access</div>
+            <div class="feature">✓ Cancel anytime</div>
+            <div class="feature">✓ 7-day trial</div>
+          </div>
+          <button class="pricing-btn">Start 7-Day Trial</button>
+          <div class="trial-note">No credit card required for trial</div>
+        </div>
+
+        <!-- Yearly Plan (Most Popular) -->
+        <div class="pricing-card featured">
+          <div class="badge">MOST POPULAR</div>
+          <div class="plan-header">
+            <h3>Yearly</h3>
+            <div class="price">
+              <span class="amount">$549</span>
+              <span class="period">/year</span>
+            </div>
+            <div class="savings">Save $279 — Just $46/month</div>
+          </div>
+          <div class="plan-features">
+            <div class="feature">✓ All indicators included</div>
+            <div class="feature">✓ Private Discord access</div>
+            <div class="feature">✓ Priority support</div>
+            <div class="feature">✓ 7-day trial</div>
+          </div>
+          <button class="pricing-btn">Start 7-Day Trial</button>
+          <div class="trial-note">No credit card required for trial</div>
+        </div>
+
+        <!-- Lifetime Plan -->
+        <div class="pricing-card">
+          <div class="badge lifetime">BEST VALUE</div>
+          <div class="plan-header">
+            <h3>Lifetime</h3>
+            <div class="price">
+              <span class="amount">$1,199</span>
+              <span class="period">one-time</span>
+            </div>
+            <div class="savings">Never pay again</div>
+          </div>
+          <div class="plan-features">
+            <div class="feature">✓ All indicators included</div>
+            <div class="feature">✓ Private Discord access</div>
+            <div class="feature">✓ Priority support</div>
+            <div class="feature">✓ Lifetime updates</div>
+          </div>
+          <button class="pricing-btn">Get Lifetime Access</button>
+          <div class="trial-note">7-day money-back guarantee</div>
+        </div>
+      </div>
+
+      <div class="pricing-footer">
+        <p>All plans include instant TradingView access, automatic updates, and our private Discord community.</p>
+      </div>
+    </div>
+  </section>
 
   <!-- Modals -->
   <!-- Volatility Stars Modal -->
