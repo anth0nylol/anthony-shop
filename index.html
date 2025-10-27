@@ -26,10 +26,39 @@
     .item img:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(122,162,255,.2)}
     .info h3{margin:0 0 8px 0;font-size:22px;color:var(--accent)}
     .info p{margin:0 0 12px 0;color:var(--muted);line-height:1.5}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;color:var(--text);font-weight:600;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(122,162,255,.12),rgba(122,162,255,.05))}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;color:var(--text);font-weight:600;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(122,162,255,.12),rgba(122,162,255,.05));cursor:pointer;font-family:inherit;font-size:inherit}
     .btn:hover{border-color:rgba(122,162,255,.4);color:white}
 
     footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
+
+    /* Modal Styles */
+    .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:1000;overflow-y:auto;padding:40px 20px}
+    .modal.active{display:flex;align-items:flex-start;justify-content:center}
+    .modal-content{background:linear-gradient(180deg,#12141a,#0b0d12);border:1px solid rgba(255,255,255,.1);border-radius:20px;max-width:900px;width:100%;margin:auto;position:relative;padding:0;animation:modalSlideIn .3s ease-out}
+    @keyframes modalSlideIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .modal-header{position:relative;border-radius:20px 20px 0 0;overflow:hidden}
+    .modal-header img{width:100%;display:block;border-bottom:1px solid rgba(255,255,255,.1)}
+    .modal-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.2);border-radius:50%;color:var(--text);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+    .modal-close:hover{background:rgba(255,255,255,.1);border-color:var(--accent);transform:rotate(90deg)}
+    .modal-body{padding:40px}
+    .modal-body h2{margin:0 0 12px 0;font-size:32px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .modal-body .tagline{color:var(--accent);font-size:18px;font-weight:600;margin-bottom:20px}
+    .modal-body p{color:var(--muted);line-height:1.7;margin-bottom:24px}
+    .modal-section{margin-top:32px}
+    .modal-section h3{color:var(--text);font-size:20px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.05)}
+    .modal-section ul{list-style:none;padding:0;margin:0}
+    .modal-section li{color:var(--muted);padding:10px 0 10px 28px;position:relative;line-height:1.6}
+    .modal-section li:before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:bold}
+
+    /* Responsive Modal Styles */
+    @media (max-width: 768px) {
+      .modal{padding:20px 10px}
+      .modal-content{max-width:100%;margin:20px 0}
+      .modal-body{padding:24px}
+      .modal-body h2{font-size:24px}
+      .modal-section h3{font-size:18px}
+      .modal-close{top:10px;right:10px;width:36px;height:36px;font-size:20px}
+    }
   </style>
 </head>
 <body>
@@ -54,7 +83,7 @@
       <div class="info">
         <h3>Volatility Stars</h3>
         <p><strong>Increased Volatility = Institutional Hedging.</strong> Highlights synchronized equity‑volatility spikes in real time, surfacing moments of broad risk stress. Clean star markers keep charts readable while calling out conditions that often precede sharp repricings. Optional single‑gauge pings for nuance; designed to complement, not crowd, execution.</p>
-        <a href="#" class="btn">Learn More</a>
+        <button class="btn" onclick="openModal('modal-volatility')">Learn More</button>
       </div>
     </div>
 
@@ -64,7 +93,7 @@
       <div class="info">
         <h3>Expansion Zones ("Rainbows")</h3>
         <p><strong>The Daily Range Has Statistical Boundaries.</strong> Projects sigma-based expansion zones from the open, revealing where institutional desks expect rotation, rejection, or exhaustion. Tracks consecutive expansion days, asymmetric skew, and percentile thresholds to surface high-probability reversals and continuations before they're obvious. Visual clarity meets statistical rigor — know when you're trading edge or noise.</p>
-        <a href="#" class="btn">Learn More</a>
+        <button class="btn" onclick="openModal('modal-expansion')">Learn More</button>
       </div>
     </div>
 
@@ -74,7 +103,7 @@
       <div class="info">
         <h3>VWAP Engine Pro</h3>
         <p><strong>VWAP Isn't Just One Line — It's a Framework.</strong> Complete multi-timeframe VWAP system with rolling execution levels, anchored session VWAPs with deviation bands, and extended closes for tracking naked institutional levels. Built for traders who use VWAP as structure, not decoration. Customizable anchoring, clean metrics, and visual clarity across every session and timeframe you need.</p>
-        <a href="#" class="btn">Learn More</a>
+        <button class="btn" onclick="openModal('modal-vwap')">Learn More</button>
       </div>
     </div>
 
@@ -84,10 +113,177 @@
       <div class="info">
         <h3>Candle Character Pro</h3>
         <p><strong>Detects absorption and momentum conditions visually to improve entry timing and trade confidence.</strong> Color-codes failed breakouts, inside bars, and Judas patterns directly on your chart for faster orderflow reading.</p>
-        <a href="#" class="btn">Learn More</a>
+        <button class="btn" onclick="openModal('modal-candle')">Learn More</button>
       </div>
     </div>
   </main>
+
+  <!-- Modals -->
+  <!-- Volatility Stars Modal -->
+  <div id="modal-volatility" class="modal" onclick="closeModalOnBackdrop(event, 'modal-volatility')">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="Volatilitystars.png" alt="Volatility Stars">
+        <div class="modal-close" onclick="closeModal('modal-volatility')">&times;</div>
+      </div>
+      <div class="modal-body">
+        <h2>Volatility Stars</h2>
+        <p class="tagline">Increased Volatility = Institutional Hedging</p>
+        <p>Highlights synchronized equity-volatility spikes in real time, surfacing moments of broad risk stress. When both VIX and VXN spike together — the "purple star" moment — it signals institutional hedging activity and often precedes sharp market repricings. Clean visual markers keep your charts readable while calling out the conditions that matter most.</p>
+        
+        <div class="modal-section">
+          <h3>Key Features</h3>
+          <ul>
+            <li>Dual-gauge volatility tracking (VIX/VXN synchronization)</li>
+            <li>Purple star signals for simultaneous equity-vol spikes</li>
+            <li>Optional single-gauge pings for granular monitoring</li>
+            <li>Real-time alerts for elevated risk regimes</li>
+            <li>Clean, non-intrusive chart markers designed to complement execution</li>
+            <li>Customizable sensitivity thresholds</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>When to Use</h3>
+          <ul>
+            <li>Pre-market preparation to gauge overnight risk sentiment</li>
+            <li>Intraday risk management — know when institutions are hedging</li>
+            <li>Identifying potential reversal or acceleration zones during elevated volatility</li>
+            <li>Confirming market internals signals with volatility context</li>
+            <li>Avoiding entries during institutional repricing events</li>
+            <li>Position sizing adjustments based on volatility regime changes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Expansion Zones Modal -->
+  <div id="modal-expansion" class="modal" onclick="closeModalOnBackdrop(event, 'modal-expansion')">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="ExpansionZones.png" alt="Expansion Zones">
+        <div class="modal-close" onclick="closeModal('modal-expansion')">&times;</div>
+      </div>
+      <div class="modal-body">
+        <h2>Expansion Zones ("Rainbows")</h2>
+        <p class="tagline">The Daily Range Has Statistical Boundaries</p>
+        <p>Projects sigma-based expansion zones from the daily open, revealing where institutional desks expect rotation, rejection, or exhaustion. This isn't guesswork — it's statistical probability. The indicator tracks consecutive expansion days, asymmetric skew ratios, and historical percentile thresholds to surface high-probability reversals and continuations before they become obvious to the crowd.</p>
+        
+        <div class="modal-section">
+          <h3>Key Features</h3>
+          <ul>
+            <li>Sigma-based expansion zones (0.5σ to 3σ+) projecting from daily open</li>
+            <li>Dynamic range percentile adjustments based on recent volatility</li>
+            <li>Consecutive expansion day tracking with exhaustion signals</li>
+            <li>Asymmetric skew detection for directional bias</li>
+            <li>75th and 90th percentile markers (where most ranges terminate)</li>
+            <li>Exhaustion, rejection, and momentum signals with probability scores</li>
+            <li>Volume exhaustion detection at extreme levels</li>
+            <li>Real-time statistics dashboard (skew ratio, win rates, regime)</li>
+            <li>Customizable zone colors and display modes (zones or lines)</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>When to Use</h3>
+          <ul>
+            <li>Mean reversion setups at 1.5σ+ extremes with rejection signals</li>
+            <li>Identifying exhaustion after 3+ consecutive expansion days</li>
+            <li>Gauging directional bias through skew ratios (bullish vs bearish asymmetry)</li>
+            <li>Setting profit targets at statistical percentile boundaries</li>
+            <li>Avoiding counter-trend trades when momentum signals fire</li>
+            <li>Confirming compression breakout validity with expansion context</li>
+            <li>Position sizing based on current volatility regime (low/normal/high)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VWAP Engine Pro Modal -->
+  <div id="modal-vwap" class="modal" onclick="closeModalOnBackdrop(event, 'modal-vwap')">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="VWAP.png" alt="VWAP Engine Pro">
+        <div class="modal-close" onclick="closeModal('modal-vwap')">&times;</div>
+      </div>
+      <div class="modal-body">
+        <h2>VWAP Engine Pro</h2>
+        <p class="tagline">VWAP Isn't Just One Line — It's a Framework</p>
+        <p>Complete multi-timeframe VWAP system designed for traders who use VWAP as market structure, not decoration. Includes rolling execution levels for intraday precision, anchored session VWAPs with standard deviation bands for institutional context, and extended VWAP closes to track naked levels across multiple timeframes. Built for clarity, customization, and execution.</p>
+        
+        <div class="modal-section">
+          <h3>Key Features</h3>
+          <ul>
+            <li><strong>Execution VWAPs:</strong> Fully customizable rolling VWAPs with real-time metrics for intraday execution</li>
+            <li><strong>Institutional VWAPs:</strong> Anchored session/timeframe VWAPs (Daily, Weekly, Monthly, RTH, ETH) with upper/lower deviation bands</li>
+            <li><strong>Extended VWAPs:</strong> Track previous timeframe VWAP closes as naked levels for continuation/reversal context</li>
+            <li>Multi-standard deviation bands (1σ, 2σ, 3σ, 4σ) for probability-based targets</li>
+            <li>Customizable session anchoring (Regular Trading Hours vs Extended Hours)</li>
+            <li>Clean visual metrics and labels for quick reference</li>
+            <li>Non-repainting calculations for backtesting accuracy</li>
+            <li>Support for multiple simultaneous VWAP instances</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>When to Use</h3>
+          <ul>
+            <li>Intraday execution around rolling VWAP for optimal entry/exit pricing</li>
+            <li>Institutional level awareness using Daily/Weekly anchored VWAPs</li>
+            <li>Mean reversion trades at 2σ/3σ/4σ deviation extremes</li>
+            <li>Tracking naked VWAP closes from previous sessions as support/resistance</li>
+            <li>Trend bias determination (price above/below VWAP)</li>
+            <li>Building multi-timeframe confluence with stacked VWAPs</li>
+            <li>Identifying OTE (Optimal Trade Entry) zones between VWAP bands</li>
+            <li>Position management using VWAP bands as dynamic stops/targets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Candle Character Pro Modal -->
+  <div id="modal-candle" class="modal" onclick="closeModalOnBackdrop(event, 'modal-candle')">
+    <div class="modal-content">
+      <div class="modal-header">
+        <img src="CandleCharacter.png" alt="Candle Character Pro">
+        <div class="modal-close" onclick="closeModal('modal-candle')">&times;</div>
+      </div>
+      <div class="modal-body">
+        <h2>Candle Character Pro</h2>
+        <p class="tagline">Simple Visual Orderflow Reading</p>
+        <p>Automatically detects and color-codes key candlestick patterns that signal absorption, liquidity sweeps, and momentum conditions. No manual pattern hunting required — the indicator highlights failed breakouts, inside bar compression, and Judas reversal patterns directly on your chart for faster decision-making and improved entry timing.</p>
+        
+        <div class="modal-section">
+          <h3>Key Features</h3>
+          <ul>
+            <li><strong>Failed Breakouts:</strong> Highlights candles that sweep highs/lows but close back inside previous range (absorption signal)</li>
+            <li><strong>Inside Bars:</strong> Marks compression candles fully contained within previous bar's range</li>
+            <li><strong>Judas Failed Breakouts:</strong> Identifies dual-sided sweeps that close inside (classic liquidity trap)</li>
+            <li><strong>Judas Valid Breakouts:</strong> Detects sweep-then-follow-through patterns (momentum confirmation)</li>
+            <li>Customizable color schemes for each pattern type</li>
+            <li>Adjustable transparency to match your chart aesthetic</li>
+            <li>Real-time pattern detection with no repainting</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>When to Use</h3>
+          <ul>
+            <li>Spotting stop hunts and liquidity sweeps before reversals</li>
+            <li>Identifying compression zones that precede expansion moves</li>
+            <li>Confirming absorption at key levels (VWAP, expansion zones, etc.)</li>
+            <li>Distinguishing real breakouts from false breakouts quickly</li>
+            <li>Entry timing refinement using inside bar compression signals</li>
+            <li>Avoiding entries on Judas patterns that signal traps</li>
+            <li>Building confluence with other indicators for higher conviction setups</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     © <span id="year"></span> Anthony's Lab — All rights reserved.
@@ -95,6 +291,32 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    function openModal(modalId) {
+      document.getElementById(modalId).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnBackdrop(event, modalId) {
+      if (event.target.id === modalId) {
+        closeModal(modalId);
+      }
+    }
+
+    // Close modal on ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const activeModal = document.querySelector('.modal.active');
+        if (activeModal) {
+          closeModal(activeModal.id);
+        }
+      }
+    });
   </script>
 </body>
 </html>
