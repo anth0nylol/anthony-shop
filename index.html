@@ -37,8 +37,8 @@
     .item-image{position:relative;cursor:pointer;border-radius:12px;overflow:hidden}
     .item-image img{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .3s ease,box-shadow .3s ease,filter .3s ease;image-rendering:auto;image-rendering:high-quality;transform:translateZ(0);backface-visibility:hidden;display:block}
     .item-image:hover img{transform:scale(1.02);box-shadow:0 8px 30px rgba(122,162,255,.2);filter:brightness(1.1)}
-    .item-image::after{content:"🔍";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:48px;opacity:0;transition:opacity .3s ease;pointer-events:none;text-shadow:0 2px 8px rgba(0,0,0,.8);animation:magnifierPulse 2s ease-in-out infinite}
-    @keyframes magnifierPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.1)}}
+    .item-image::after{content:"🔍";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:32px;opacity:0;transition:opacity .3s ease;pointer-events:none;text-shadow:0 2px 8px rgba(0,0,0,.8);animation:magnifierPulse 2s ease-in-out infinite}
+    @keyframes magnifierPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.05)}}
     .item-image:hover::after{opacity:1}
     .item img:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(122,162,255,.2)}
     .info h3{margin:0 0 8px 0;font-size:22px;color:var(--accent)}
@@ -132,7 +132,7 @@
       .pricing-card.featured:hover{transform:translateY(-8px)}
       .price .amount{font-size:40px}
       
-      .item-image::after{font-size:36px}
+      .item-image::after{font-size:24px}
     }
   </style>
 </head>
