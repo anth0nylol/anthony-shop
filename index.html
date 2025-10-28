@@ -34,7 +34,12 @@
 
     .catalog{display:grid;gap:30px;max-width:1100px;margin:0 auto 120px;padding:0 20px}
     .item{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:center;gap:20px;border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:20px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01))}
-    .item img{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .3s ease,box-shadow .3s ease;image-rendering:auto;image-rendering:high-quality;transform:translateZ(0);backface-visibility:hidden}
+    .item-image{position:relative;cursor:pointer;border-radius:12px;overflow:hidden}
+    .item-image img{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .3s ease,box-shadow .3s ease,filter .3s ease;image-rendering:auto;image-rendering:high-quality;transform:translateZ(0);backface-visibility:hidden;display:block}
+    .item-image:hover img{transform:scale(1.02);box-shadow:0 8px 30px rgba(122,162,255,.2);filter:brightness(1.1)}
+    .item-image::after{content:"🔍";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:48px;opacity:0;transition:opacity .3s ease;pointer-events:none;text-shadow:0 2px 8px rgba(0,0,0,.8);animation:magnifierPulse 2s ease-in-out infinite}
+    @keyframes magnifierPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.1)}}
+    .item-image:hover::after{opacity:1}
     .item img:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(122,162,255,.2)}
     .info h3{margin:0 0 8px 0;font-size:22px;color:var(--accent)}
     .info p{margin:0 0 12px 0;color:var(--muted);line-height:1.5}
@@ -126,6 +131,8 @@
       .pricing-card.featured{transform:scale(1);border-width:2px}
       .pricing-card.featured:hover{transform:translateY(-8px)}
       .price .amount{font-size:40px}
+      
+      .item-image::after{font-size:36px}
     }
   </style>
 </head>
@@ -152,7 +159,9 @@
   <main id="catalog" class="catalog">
     <!-- Volatility Stars -->
     <div class="item">
-      <img src="Volatilitystars.png" alt="Volatility Stars — synchronized volatility spike highlights" />
+      <div class="item-image" onclick="openModal('modal-volatility')">
+        <img src="Volatilitystars.png" alt="Volatility Stars — synchronized volatility spike highlights" />
+      </div>
       <div class="info">
         <h3>Volatility Stars</h3>
         <p><strong>Increased Volatility = Institutional Hedging.</strong> Highlights synchronized equity‑volatility spikes in real time, surfacing moments of broad risk stress. Clean star markers keep charts readable while calling out conditions that often precede sharp repricings. Optional single‑gauge pings for nuance; designed to complement, not crowd, execution.</p>
@@ -162,7 +171,9 @@
 
     <!-- Expansion Zones -->
     <div class="item">
-      <img src="ExpansionZones.png" alt="Expansion Zones — statistical range boundaries" />
+      <div class="item-image" onclick="openModal('modal-expansion')">
+        <img src="ExpansionZones.png" alt="Expansion Zones — statistical range boundaries" />
+      </div>
       <div class="info">
         <h3>Expansion Zones ("Rainbows")</h3>
         <p><strong>The Daily Range Has Statistical Boundaries.</strong> Projects sigma-based expansion zones from the open, revealing where institutional desks expect rotation, rejection, or exhaustion. Tracks consecutive expansion days, asymmetric skew, and percentile thresholds to surface high-probability reversals and continuations before they're obvious. Visual clarity meets statistical rigor — know when you're trading edge or noise.</p>
@@ -172,7 +183,9 @@
 
     <!-- VWAP Engine Pro -->
     <div class="item">
-      <img src="VWAP.png" alt="VWAP Engine Pro" />
+      <div class="item-image" onclick="openModal('modal-vwap')">
+        <img src="VWAP.png" alt="VWAP Engine Pro" />
+      </div>
       <div class="info">
         <h3>VWAP Engine Pro</h3>
         <p><strong>VWAP Isn't Just One Line — It's a Framework.</strong> Complete multi-timeframe VWAP system with rolling execution levels, anchored session VWAPs with deviation bands, and extended closes for tracking naked institutional levels. Built for traders who use VWAP as structure, not decoration. Customizable anchoring, clean metrics, and visual clarity across every session and timeframe you need.</p>
@@ -182,7 +195,9 @@
 
     <!-- Candle Character Pro -->
     <div class="item">
-      <img src="CandleCharacter.png" alt="Candle Character" />
+      <div class="item-image" onclick="openModal('modal-candle')">
+        <img src="CandleCharacter.png" alt="Candle Character" />
+      </div>
       <div class="info">
         <h3>Candle Character Pro</h3>
         <p><strong>Detects absorption and momentum conditions visually to improve entry timing and trade confidence.</strong> Color-codes failed breakouts, inside bars, and Judas patterns directly on your chart for faster orderflow reading.</p>
