@@ -4,7 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Anthony's Lab — Indicators</title>
-  <meta name="description" content="Advanced Institutional Levels — Stop Guessing. Professional TradingView indicators from Anthony's Lab." />
+  <meta name="description" content="Institutional Levels. Zero Guesswork. Professional TradingView indicators from Anthony's Lab." />
+  <link rel="icon" type="image/webp" href="logo.webp" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   
   <!-- Memberful -->
@@ -15,8 +16,14 @@
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-    header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05)}
-    header h1{margin:0;font-size:20px;letter-spacing:.5px}
+    header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05);animation:fadeInDown .6s ease-out}
+    @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+    .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform .3s ease}
+    .brand-link:hover{transform:translateY(-2px)}
+    .logo{height:42px;width:auto;filter:drop-shadow(0 0 8px rgba(122,162,255,.3));transition:filter .3s ease}
+    .brand-link:hover .logo{filter:drop-shadow(0 0 12px rgba(122,162,255,.5))}
+    .brand-text{margin:0;font-size:18px;letter-spacing:.5px;font-weight:600;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent));background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 4s ease-in-out infinite}
+    @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
     nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:500}
     nav a:hover{color:var(--accent)}
 
@@ -101,6 +108,11 @@
 
     /* Responsive Modal Styles */
     @media (max-width: 768px) {
+      header{padding:16px 20px}
+      .logo{height:36px}
+      .brand-text{font-size:16px}
+      nav a{margin-left:12px;font-size:14px}
+      
       .modal{padding:20px 10px}
       .modal-content{max-width:100%;margin:20px 0}
       .modal-body{padding:24px}
@@ -119,7 +131,10 @@
 </head>
 <body>
   <header>
-    <h1>Anthony's Lab</h1>
+    <a href="/" class="brand-link">
+      <img src="logo.webp" alt="Anthony's Lab" class="logo" />
+      <h1 class="brand-text">Anthony's Lab</h1>
+    </a>
     <nav>
       <a href="/">Home</a>
       <a href="#catalog">Catalog</a>
@@ -130,7 +145,7 @@
   </header>
 
   <section class="hero">
-    <h2>Advanced Institutional Levels — Stop Guessing</h2>
+    <h2>Institutional Levels. Zero Guesswork.</h2>
     <p>Professional-grade TradingView indicators built for precision and execution — not patterns or noise.</p>
   </section>
 
