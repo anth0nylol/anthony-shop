@@ -6,6 +6,10 @@
   <title>Anthony's Lab — Indicators</title>
   <meta name="description" content="Advanced Institutional Levels — Stop Guessing. Professional TradingView indicators from Anthony's Lab." />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Memberful -->
+  <script async data-memberful-embed src="https://members.anthonyslab.shop/auth.js"></script>
+  
   <style>
     :root { --bg:#0b0d12; --text:#e6e9ef; --muted:#9aa3b2; --accent:#7aa2ff; --accent2:#88f0ff; }
     *,*::before,*::after{box-sizing:border-box}
@@ -66,7 +70,7 @@
     .feature{color:var(--muted);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:15px}
     .feature:last-child{border-bottom:none}
     
-    .pricing-btn{width:100%;padding:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:8px}
+    .pricing-btn{width:100%;padding:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;border:none;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:8px;text-decoration:none;display:block;text-align:center}
     .pricing-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(122,162,255,.4)}
     
     .trial-note{text-align:center;color:var(--muted);font-size:12px;margin-top:12px}
@@ -120,6 +124,7 @@
       <a href="/">Home</a>
       <a href="#catalog">Catalog</a>
       <a href="#pricing">Pricing</a>
+      <a href="https://members.anthonyslab.shop/account" data-memberful-account>Account</a>
       <a href="mailto:support@anthony.trade">Contact</a>
     </nav>
   </header>
@@ -176,7 +181,7 @@
     <div class="pricing-container">
       <div class="pricing-header">
         <h2>Professional Tools. Retail Price.</h2>
-        <p>Get institutional-level indicators without institutional fees. 7-day risk-free trial on all plans.</p>
+        <p>Get institutional-level indicators without institutional fees. Try monthly risk-free for 7 days.</p>
       </div>
 
       <div class="pricing-benefits">
@@ -200,11 +205,11 @@
           <div class="plan-features">
             <div class="feature">✓ All indicators included</div>
             <div class="feature">✓ Private Discord access</div>
+            <div class="feature">✓ 7-day free trial</div>
             <div class="feature">✓ Cancel anytime</div>
-            <div class="feature">✓ 7-day trial</div>
           </div>
-          <button class="pricing-btn">Start 7-Day Trial</button>
-          <div class="trial-note">No credit card required for trial</div>
+          <a href="https://members.anthonyslab.shop/checkout?plan=135764" class="pricing-btn" data-memberful-checkout>Start 7-Day Free Trial</a>
+          <div class="trial-note">Card required • Cancel anytime</div>
         </div>
 
         <!-- Yearly Plan (Most Popular) -->
@@ -222,10 +227,10 @@
             <div class="feature">✓ All indicators included</div>
             <div class="feature">✓ Private Discord access</div>
             <div class="feature">✓ Priority support</div>
-            <div class="feature">✓ 7-day trial</div>
+            <div class="feature">✓ Best value per month</div>
           </div>
-          <button class="pricing-btn">Start 7-Day Trial</button>
-          <div class="trial-note">No credit card required for trial</div>
+          <a href="https://members.anthonyslab.shop/checkout?plan=135765" class="pricing-btn" data-memberful-checkout>Get Started</a>
+          <div class="trial-note">Instant access • Cancel anytime</div>
         </div>
 
         <!-- Lifetime Plan -->
@@ -245,8 +250,8 @@
             <div class="feature">✓ Priority support</div>
             <div class="feature">✓ Lifetime updates</div>
           </div>
-          <button class="pricing-btn">Get Lifetime Access</button>
-          <div class="trial-note">7-day money-back guarantee</div>
+          <a href="https://members.anthonyslab.shop/checkout?plan=135766" class="pricing-btn" data-memberful-checkout>Get Lifetime Access</a>
+          <div class="trial-note">One-time payment • 7-day refund policy</div>
         </div>
       </div>
 
