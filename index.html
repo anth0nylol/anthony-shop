@@ -41,7 +41,7 @@
     .showcase-header p{color:var(--muted);font-size:17px;max-width:700px;margin:0 auto 14px auto}
     .showcase-header .hint{color:var(--accent);font-size:14px;font-weight:500;opacity:.8}
     
-    .indicators-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;max-width:1400px;margin:0 auto;padding:0 20px}
+    .indicators-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;max-width:1200px;margin:0 auto;padding:0 20px}
     
     @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
@@ -192,15 +192,17 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      header{padding:14px 18px}
-      .logo{height:34px}
-      .brand-text{font-size:15px}
-      nav a{margin-left:12px;font-size:13px}
+      header{padding:14px 18px;flex-wrap:wrap;gap:12px}
+      .brand-link{flex:1 1 100%;justify-content:center;margin-bottom:8px}
+      nav{flex:1 1 100%;display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+      nav a{margin-left:0;font-size:12px;padding:6px 10px;background:rgba(122,162,255,.08);border-radius:6px}
+      .logo{height:32px}
+      .brand-text{font-size:14px}
       
       .hero{padding:60px 20px 50px}
       
       .showcase-section{padding:60px 20px}
-      .indicators-grid{grid-template-columns:1fr;gap:24px;padding:0}
+      .indicators-grid{grid-template-columns:1fr;gap:24px;padding:0 10px}
       .showcase-card{padding:20px}
       .showcase-card-image{height:180px}
       .showcase-card h3{font-size:18px}
