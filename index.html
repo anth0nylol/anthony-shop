@@ -34,35 +34,39 @@
     .hero p{color:var(--muted);font-size:17px;margin-top:12px;line-height:1.6}
     .hero .subtext{color:var(--text);font-size:15px;margin-top:20px;padding:14px 22px;background:rgba(122,162,255,.08);border:1px solid rgba(122,162,255,.15);border-radius:12px;display:inline-block}
 
-    /* Clean Horizontal Scrolling Carousel */
-    .showcase-section{padding:60px 20px;background:linear-gradient(180deg,rgba(15,17,21,.8),var(--bg));overflow:hidden;position:relative}
-    .showcase-header{text-align:center;margin-bottom:50px}
+    /* Modern Static Indicators Grid */
+    .showcase-section{padding:80px 20px;background:linear-gradient(180deg,rgba(15,17,21,.8),var(--bg));position:relative}
+    .showcase-header{text-align:center;margin-bottom:60px}
     .showcase-header h2{font-size:clamp(32px,5vw,48px);margin:0 0 14px 0;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .showcase-header p{color:var(--muted);font-size:17px;max-width:700px;margin:0 auto 14px auto}
     .showcase-header .hint{color:var(--accent);font-size:14px;font-weight:500;opacity:.8}
     
-    .carousel-container{position:relative;max-width:100%;margin:0 auto;padding:40px 0}
-    .carousel-track{display:flex;gap:30px;animation:scrollLeft 45s linear infinite;will-change:transform}
-    .carousel-track:hover{animation-play-state:paused}
-    @keyframes scrollLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .indicators-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;max-width:1400px;margin:0 auto;padding:0 20px}
     
-    .showcase-card{min-width:320px;flex-shrink:0;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;position:relative;transition:transform .4s cubic-bezier(0.4,0,0.2,1),box-shadow .4s cubic-bezier(0.4,0,0.2,1),border-color .4s;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05)}
-    .showcase-card:hover{transform:translateY(-12px) scale(1.03);box-shadow:0 20px 50px rgba(122,162,255,.35),0 10px 30px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.1);border-color:rgba(122,162,255,.5);z-index:10}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
     
-    .showcase-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(122,162,255,.03),transparent);border-radius:16px;opacity:0;transition:opacity .4s}
+    .showcase-card{background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:24px;position:relative;transition:all .5s cubic-bezier(0.4,0,0.2,1);cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05);animation:fadeInUp .8s ease-out backwards}
+    
+    .showcase-card:hover{transform:translateY(-16px) scale(1.02);box-shadow:0 24px 60px rgba(122,162,255,.4),0 12px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.15);border-color:rgba(122,162,255,.6)}
+    
+    .showcase-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(122,162,255,.08),rgba(136,240,255,.04));border-radius:20px;opacity:0;transition:opacity .5s;pointer-events:none}
     .showcase-card:hover::before{opacity:1}
     
-    .showcase-card-image{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:14px;border:1px solid rgba(255,255,255,.1);transition:all .3s cubic-bezier(0.4,0,0.2,1);box-shadow:0 4px 12px rgba(0,0,0,.3)}
-    .showcase-card:hover .showcase-card-image{border-color:rgba(122,162,255,.4);transform:translateY(-2px);box-shadow:0 6px 16px rgba(122,162,255,.2)}
+    .showcase-card::after{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:20px;opacity:0;z-index:-1;transition:opacity .5s;filter:blur(20px)}
+    .showcase-card:hover::after{opacity:.3}
     
-    .playbook-card-simple{width:100%;height:180px;border-radius:10px;margin-bottom:14px;border:1px solid rgba(255,255,255,.1);transition:all .3s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;justify-content:center;font-size:52px;background:linear-gradient(135deg,#1a1f26,#0f1218);box-shadow:0 4px 12px rgba(0,0,0,.3)}
-    .showcase-card:hover .playbook-card-simple{border-color:rgba(122,162,255,.4);transform:translateY(-2px);box-shadow:0 6px 16px rgba(122,162,255,.2)}
+    .showcase-card-image{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;margin-bottom:18px;border:1px solid rgba(255,255,255,.1);transition:all .5s cubic-bezier(0.4,0,0.2,1);box-shadow:0 4px 12px rgba(0,0,0,.4)}
+    .showcase-card:hover .showcase-card-image{border-color:rgba(122,162,255,.5);transform:translateY(-4px) scale(1.02);box-shadow:0 12px 24px rgba(122,162,255,.3),0 6px 12px rgba(0,0,0,.4)}
     
-    .showcase-card h3{margin:0 0 6px 0;font-size:18px;color:var(--accent);font-weight:600;transition:color .3s;line-height:1.3}
-    .showcase-card:hover h3{color:var(--accent2)}
-    .showcase-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.4}
-    .showcase-card .tag{position:absolute;top:14px;right:14px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;padding:5px 12px;border-radius:16px;font-size:10px;font-weight:700;letter-spacing:.5px;transition:all .3s;z-index:2;box-shadow:0 2px 8px rgba(122,162,255,.3)}
-    .showcase-card:hover .tag{box-shadow:0 4px 16px rgba(122,162,255,.5);transform:translateY(-1px)}
+    .showcase-card h3{margin:0 0 8px 0;font-size:20px;color:var(--accent);font-weight:700;transition:all .3s;line-height:1.3;letter-spacing:-.02em}
+    .showcase-card:hover h3{color:var(--accent2);transform:translateX(4px)}
+    
+    .showcase-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.5;transition:color .3s}
+    .showcase-card:hover p{color:var(--text)}
+    
+    .showcase-card .tag{position:absolute;top:16px;right:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.8px;transition:all .4s;z-index:2;box-shadow:0 2px 8px rgba(122,162,255,.3)}
+    .showcase-card:hover .tag{box-shadow:0 6px 20px rgba(122,162,255,.6);transform:translateY(-2px) scale(1.05)}
 
     /* Education Library Section */
     .education-section{padding:80px 20px;background:linear-gradient(180deg,var(--bg),rgba(15,17,21,.5))}
@@ -195,14 +199,11 @@
       
       .hero{padding:60px 20px 50px}
       
-      .showcase-section{padding:50px 20px}
-      .carousel-container{padding:30px 0}
-      .carousel-track{gap:20px}
-      .showcase-card{min-width:280px;padding:16px}
-      .showcase-card-image{height:150px}
-      .playbook-card-simple{height:150px;font-size:44px}
-      .showcase-card h3{font-size:16px}
-      .showcase-card p{font-size:13px}
+      .showcase-section{padding:60px 20px}
+      .indicators-grid{grid-template-columns:1fr;gap:24px;padding:0}
+      .showcase-card{padding:20px}
+      .showcase-card-image{height:180px}
+      .showcase-card h3{font-size:18px}
       
       .education-section{padding:60px 20px}
       .education-grid{grid-template-columns:1fr;gap:24px}
@@ -248,90 +249,38 @@
     <div class="subtext">4 Professional Indicators • 2 Complete Playbooks • 1 Proven System</div>
   </section>
 
-  <!-- Animated Product Showcase -->
+  <!-- Professional Indicators Showcase -->
   <section id="showcase" class="showcase-section">
     <div class="showcase-header">
-      <h2>What You Get</h2>
-      <p>A complete ecosystem of indicators and education, not just isolated tools</p>
-      <div class="hint">Click any product to learn more</div>
+      <h2>Professional Indicators</h2>
+      <p>Institutional-grade tools designed for precision execution on NQ/ES futures</p>
+      <div class="hint">Click any indicator to learn more</div>
     </div>
     
-    <div class="carousel-container">
-      <div class="carousel-track">
-        <!-- First set of all products -->
-        <div class="showcase-card" onclick="openModal('modal-volatility')">
-          <span class="tag">INDICATOR</span>
-          <img src="Volatilitystars.png" alt="Volatility Stars" class="showcase-card-image">
-          <h3>Volatility Stars</h3>
-          <p>Institutional hedging activity detection</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-expansion')">
-          <span class="tag">INDICATOR</span>
-          <img src="ExpansionZones.png" alt="Expansion Zones" class="showcase-card-image">
-          <h3>Expansion Zones</h3>
-          <p>Statistical range projections</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-vwap')">
-          <span class="tag">INDICATOR</span>
-          <img src="VWAP.png" alt="VWAP Engine" class="showcase-card-image">
-          <h3>VWAP Engine Pro</h3>
-          <p>Multi-timeframe VWAP framework</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-candle')">
-          <span class="tag">INDICATOR</span>
-          <img src="CandleCharacter.png" alt="Candle Character" class="showcase-card-image">
-          <h3>Candle Character Pro</h3>
-          <p>Orderflow pattern detection</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-scalping')">
-          <span class="tag">PLAYBOOK</span>
-          <div class="playbook-card-simple">📖</div>
-          <h3>Scalping Playbook</h3>
-          <p>4 mechanical setups for intraday execution</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-scaling')">
-          <span class="tag">PLAYBOOK</span>
-          <div class="playbook-card-simple">📈</div>
-          <h3>Multi-Account Scaling</h3>
-          <p>Business plan for prop firm traders</p>
-        </div>
-        <!-- Duplicate set for seamless infinite loop -->
-        <div class="showcase-card" onclick="openModal('modal-volatility')">
-          <span class="tag">INDICATOR</span>
-          <img src="Volatilitystars.png" alt="Volatility Stars" class="showcase-card-image">
-          <h3>Volatility Stars</h3>
-          <p>Institutional hedging activity detection</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-expansion')">
-          <span class="tag">INDICATOR</span>
-          <img src="ExpansionZones.png" alt="Expansion Zones" class="showcase-card-image">
-          <h3>Expansion Zones</h3>
-          <p>Statistical range projections</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-vwap')">
-          <span class="tag">INDICATOR</span>
-          <img src="VWAP.png" alt="VWAP Engine" class="showcase-card-image">
-          <h3>VWAP Engine Pro</h3>
-          <p>Multi-timeframe VWAP framework</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-candle')">
-          <span class="tag">INDICATOR</span>
-          <img src="CandleCharacter.png" alt="Candle Character" class="showcase-card-image">
-          <h3>Candle Character Pro</h3>
-          <p>Orderflow pattern detection</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-scalping')">
-          <span class="tag">PLAYBOOK</span>
-          <div class="playbook-card-simple">📖</div>
-          <h3>Scalping Playbook</h3>
-          <p>4 mechanical setups for intraday execution</p>
-        </div>
-        <div class="showcase-card" onclick="openModal('modal-scaling')">
-          <span class="tag">PLAYBOOK</span>
-          <div class="playbook-card-simple">📈</div>
-          <h3>Multi-Account Scaling</h3>
-          <p>Business plan for prop firm traders</p>
-        </div>
+    <div class="indicators-grid">
+      <div class="showcase-card" onclick="openModal('modal-volatility')" style="animation-delay:0.1s">
+        <span class="tag">INDICATOR</span>
+        <img src="Volatilitystars.png" alt="Volatility Stars" class="showcase-card-image">
+        <h3>Volatility Stars</h3>
+        <p>Institutional hedging activity detection</p>
+      </div>
+      <div class="showcase-card" onclick="openModal('modal-expansion')" style="animation-delay:0.2s">
+        <span class="tag">INDICATOR</span>
+        <img src="ExpansionZones.png" alt="Expansion Zones" class="showcase-card-image">
+        <h3>Expansion Zones</h3>
+        <p>Statistical range projections</p>
+      </div>
+      <div class="showcase-card" onclick="openModal('modal-vwap')" style="animation-delay:0.3s">
+        <span class="tag">INDICATOR</span>
+        <img src="VWAP.png" alt="VWAP Engine" class="showcase-card-image">
+        <h3>VWAP Engine Pro</h3>
+        <p>Multi-timeframe VWAP framework</p>
+      </div>
+      <div class="showcase-card" onclick="openModal('modal-candle')" style="animation-delay:0.4s">
+        <span class="tag">INDICATOR</span>
+        <img src="CandleCharacter.png" alt="Candle Character" class="showcase-card-image">
+        <h3>Candle Character Pro</h3>
+        <p>Orderflow pattern detection</p>
       </div>
     </div>
   </section>
