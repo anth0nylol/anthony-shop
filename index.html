@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Anthony's Lab — Indicators</title>
-  <meta name="description" content="Institutional Levels. Zero Guesswork. Professional TradingView indicators from Anthony's Lab." />
+  <title>Anthony's Lab — Complete Trading System</title>
+  <meta name="description" content="Professional indicators + institutional-grade education. The complete system for NQ/ES futures trading." />
   <link rel="icon" type="image/webp" href="logo.webp" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   
@@ -16,6 +16,7 @@
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+    
     header{display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(15,17,21,.8);backdrop-filter:blur(6px);position:sticky;top:0;z-index:10;border-bottom:1px solid rgba(255,255,255,.05);animation:fadeInDown .6s ease-out}
     @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
     .brand-link{display:flex;align-items:center;gap:12px;text-decoration:none;transition:transform .3s ease}
@@ -24,31 +25,113 @@
     .brand-link:hover .logo{filter:drop-shadow(0 0 12px rgba(122,162,255,.5))}
     .brand-text{margin:0;font-size:18px;letter-spacing:.5px;font-weight:600;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--accent));background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradientShift 4s ease-in-out infinite}
     @keyframes gradientShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-    nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:500}
+    nav a{margin-left:20px;color:var(--muted);text-decoration:none;font-weight:500;transition:color .2s}
     nav a:hover{color:var(--accent)}
 
     .hero{text-align:center;padding:100px 20px 80px;max-width:900px;margin:auto}
     .hero h2{font-size:clamp(36px,6vw,72px);margin:0;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:grad 8s linear infinite;background-size:200% 100%}
     @keyframes grad{0%{background-position:0 0}100%{background-position:200% 0}}
-    .hero p{color:var(--muted);font-size:18px;margin-top:14px}
+    .hero p{color:var(--muted);font-size:18px;margin-top:14px;line-height:1.6}
+    .hero .subtext{color:var(--text);font-size:16px;margin-top:24px;padding:16px 24px;background:rgba(122,162,255,.08);border:1px solid rgba(122,162,255,.15);border-radius:12px;display:inline-block}
 
-    .catalog{display:grid;gap:30px;max-width:1100px;margin:0 auto 120px;padding:0 20px}
-    .item{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:center;gap:20px;border:1px solid rgba(255,255,255,.05);border-radius:16px;padding:20px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01))}
-    .item-image{position:relative;cursor:pointer;border-radius:12px;overflow:hidden}
-    .item-image img{width:100%;border-radius:12px;border:1px solid rgba(255,255,255,.08);box-shadow:0 4px 20px rgba(0,0,0,.4);transition:transform .3s ease,box-shadow .3s ease,filter .3s ease;image-rendering:auto;image-rendering:high-quality;transform:translateZ(0);backface-visibility:hidden;display:block}
-    .item-image:hover img{transform:scale(1.02);box-shadow:0 8px 30px rgba(122,162,255,.2);filter:brightness(1.1)}
-    .item-image::after{content:"View Details";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:14px;font-weight:500;letter-spacing:.3px;color:white;background:rgba(122,162,255,.85);padding:8px 16px;border-radius:6px;opacity:0;transition:opacity .3s ease,transform .3s ease;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.3);backdrop-filter:blur(6px)}
-    .item-image:hover::after{opacity:.9;transform:translate(-50%,-50%)}
-    .item img:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(122,162,255,.2)}
-    .info h3{margin:0 0 8px 0;font-size:22px;color:var(--accent)}
-    .info p{margin:0 0 12px 0;color:var(--muted);line-height:1.5}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;color:var(--text);font-weight:600;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,rgba(122,162,255,.12),rgba(122,162,255,.05));cursor:pointer;font-family:inherit;font-size:inherit}
-    .btn:hover{border-color:rgba(122,162,255,.4);color:white}
+    /* Animated 3D Circular Carousel - Enhanced */
+    .showcase-section{padding:80px 20px;background:linear-gradient(180deg,rgba(15,17,21,.8),var(--bg));overflow:hidden;position:relative;min-height:700px}
+    .showcase-header{text-align:center;margin-bottom:60px}
+    .showcase-header h2{font-size:clamp(32px,5vw,48px);margin:0 0 16px 0;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .showcase-header p{color:var(--muted);font-size:18px;max-width:700px;margin:0 auto 16px auto}
+    .showcase-header .hint{color:var(--accent);font-size:15px;font-weight:500;opacity:.8}
+    
+    .carousel-container{position:relative;height:500px;perspective:1400px;margin:0 auto}
+    .carousel-track{position:absolute;width:100%;height:100%;transform-style:preserve-3d;animation:rotate3d 35s linear infinite}
+    .carousel-container:hover .carousel-track{animation-play-state:paused}
+    @keyframes rotate3d{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+    
+    .showcase-card{position:absolute;left:50%;top:50%;width:300px;height:250px;margin-left:-150px;margin-top:-125px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(0.4,0,0.2,1),box-shadow .5s cubic-bezier(0.4,0,0.2,1),border-color .5s;cursor:pointer;backface-visibility:hidden;box-shadow:0 8px 32px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.05)}
+    .showcase-card:hover{transform:translateZ(80px) scale(1.08);box-shadow:0 30px 70px rgba(122,162,255,.4),0 15px 40px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1);border-color:rgba(122,162,255,.5);z-index:10}
+    
+    .showcase-card:nth-child(1){transform:rotateY(0deg) translateZ(600px)}
+    .showcase-card:nth-child(2){transform:rotateY(60deg) translateZ(600px)}
+    .showcase-card:nth-child(3){transform:rotateY(120deg) translateZ(600px)}
+    .showcase-card:nth-child(4){transform:rotateY(180deg) translateZ(600px)}
+    .showcase-card:nth-child(5){transform:rotateY(240deg) translateZ(600px)}
+    .showcase-card:nth-child(6){transform:rotateY(300deg) translateZ(600px)}
+    
+    .showcase-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(122,162,255,.03),transparent);border-radius:16px;opacity:0;transition:opacity .5s}
+    .showcase-card:hover::before{opacity:1}
+    
+    .showcase-card-image{width:100%;height:130px;object-fit:cover;border-radius:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,.1);transition:all .4s cubic-bezier(0.4,0,0.2,1);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+    .showcase-card:hover .showcase-card-image{border-color:rgba(122,162,255,.4);transform:translateY(-2px);box-shadow:0 8px 20px rgba(122,162,255,.2)}
+    
+    .playbook-card-simple{width:100%;height:130px;border-radius:10px;margin-bottom:12px;border:1px solid rgba(255,255,255,.1);transition:all .4s cubic-bezier(0.4,0,0.2,1);display:flex;align-items:center;justify-content:center;font-size:44px;background:linear-gradient(135deg,#1a1f26,#0f1218);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+    .showcase-card:hover .playbook-card-simple{border-color:rgba(122,162,255,.4);transform:translateY(-2px);box-shadow:0 8px 20px rgba(122,162,255,.2)}
+    
+    .showcase-card h3{margin:0 0 6px 0;font-size:17px;color:var(--accent);font-weight:600;transition:color .3s;line-height:1.3}
+    .showcase-card:hover h3{color:var(--accent2)}
+    .showcase-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.4}
+    .showcase-card .tag{position:absolute;top:14px;right:14px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;padding:5px 12px;border-radius:16px;font-size:10px;font-weight:700;letter-spacing:.5px;transition:all .3s;z-index:2;box-shadow:0 2px 8px rgba(122,162,255,.3)}
+    .showcase-card:hover .tag{box-shadow:0 4px 16px rgba(122,162,255,.5);transform:translateY(-1px)}
 
-    footer{text-align:center;padding:60px 20px 40px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
+    /* Education Library Section */
+    .education-section{padding:100px 20px;background:linear-gradient(180deg,var(--bg),rgba(15,17,21,.5))}
+    .education-header{text-align:center;margin-bottom:60px}
+    .education-header h2{font-size:clamp(36px,5vw,56px);margin:0 0 16px 0;background:linear-gradient(90deg,#a78bfa,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .education-header p{color:var(--muted);font-size:18px;max-width:700px;margin:0 auto 8px auto;line-height:1.6}
+    .education-header .highlight{color:var(--accent);font-weight:600;display:block;margin-top:12px}
+    .education-header .hint{color:var(--accent);font-size:15px;font-weight:500;opacity:.8}
+    
+    .education-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:40px;max-width:1200px;margin:0 auto}
+    
+    .book-card{background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:32px;position:relative;transition:all .4s ease;transform-style:preserve-3d;cursor:pointer}
+    .book-card:hover{transform:translateY(-16px) scale(1.02);border-color:rgba(122,162,255,.3);box-shadow:0 24px 60px rgba(122,162,255,.2)}
+    .book-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(122,162,255,.05),transparent);border-radius:20px;opacity:0;transition:opacity .4s}
+    .book-card:hover::before{opacity:1}
+    
+    .book-icon{width:100%;height:240px;background:linear-gradient(135deg,#1a1f26,#0f1218);border:2px solid rgba(122,162,255,.15);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;position:relative;overflow:hidden;transition:all .4s}
+    .book-card:hover .book-icon{border-color:rgba(122,162,255,.4);box-shadow:0 12px 40px rgba(122,162,255,.15)}
+    .book-icon::after{content:'📖';font-size:64px;opacity:.6;transition:all .4s}
+    .book-card:hover .book-icon::after{transform:scale(1.1);opacity:1}
+    .book-badge{position:absolute;top:12px;right:12px;background:rgba(122,162,255,.2);backdrop-filter:blur(8px);color:var(--accent2);padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.8px;border:1px solid rgba(122,162,255,.3)}
+    
+    .book-content h3{margin:0 0 12px 0;font-size:24px;color:var(--text);font-weight:700}
+    .book-content .pages{color:var(--muted);font-size:14px;margin-bottom:16px;font-style:italic}
+    .book-content p{color:var(--muted);line-height:1.7;margin-bottom:20px;font-size:15px}
+    .book-features{list-style:none;padding:0;margin:20px 0;border-top:1px solid rgba(255,255,255,.05);padding-top:20px}
+    .book-features li{color:var(--muted);padding:8px 0;font-size:14px;display:flex;align-items:center;gap:8px}
+    .book-features li::before{content:'✓';color:var(--accent);font-weight:bold;font-size:16px}
+
+    /* Complete System Bundle */
+    .bundle-section{padding:100px 20px;background:linear-gradient(180deg,rgba(15,17,21,.5),rgba(122,162,255,.03))}
+    .bundle-container{max-width:1200px;margin:0 auto}
+    .bundle-hero{text-align:center;margin-bottom:60px}
+    .bundle-hero h2{font-size:clamp(40px,6vw,64px);margin:0 0 20px 0;background:linear-gradient(90deg,var(--accent),var(--accent2),#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
+    .bundle-hero p{color:var(--text);font-size:20px;max-width:800px;margin:0 auto 12px auto;line-height:1.6}
+    .bundle-hero .value{color:var(--accent2);font-size:16px;font-weight:600;margin-top:16px}
+    
+    .bundle-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+    .bundle-showcase{background:linear-gradient(135deg,rgba(122,162,255,.08),rgba(136,240,255,.04));border:2px solid rgba(122,162,255,.2);border-radius:24px;padding:40px;position:relative;min-height:600px;display:flex;flex-direction:column;justify-content:center}
+    .bundle-stack{position:relative;width:100%;max-width:400px;margin:0 auto}
+    .bundle-item{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:2px solid rgba(122,162,255,.15);border-radius:16px;padding:20px;margin-bottom:16px;transition:all .3s;cursor:pointer}
+    .bundle-item:hover{transform:translateX(8px);border-color:rgba(122,162,255,.4);box-shadow:0 8px 24px rgba(122,162,255,.2)}
+    .bundle-item-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .bundle-item-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px}
+    .bundle-item h4{margin:0;color:var(--text);font-size:16px;font-weight:600}
+    .bundle-item p{margin:0;color:var(--muted);font-size:13px;line-height:1.5}
+    
+    .bundle-pricing{background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:2px solid rgba(122,162,255,.2);border-radius:24px;padding:48px;text-align:center;position:sticky;top:100px}
+    .bundle-pricing .badge{background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;padding:8px 20px;border-radius:24px;font-size:13px;font-weight:700;letter-spacing:.8px;display:inline-block;margin-bottom:24px}
+    .bundle-pricing h3{margin:0 0 32px 0;font-size:28px;color:var(--text)}
+    .price-display{margin:32px 0}
+    .price-display .original{color:var(--muted);font-size:20px;text-decoration:line-through;margin-bottom:8px}
+    .price-display .bundle-price{font-size:56px;font-weight:700;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+    .price-display .savings{color:var(--accent2);font-size:18px;font-weight:600;margin-top:12px}
+    .bundle-features-list{list-style:none;padding:0;margin:32px 0;text-align:left}
+    .bundle-features-list li{color:var(--muted);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.03);font-size:15px}
+    .bundle-features-list li:last-child{border-bottom:none}
+    .bundle-btn{display:block;width:100%;padding:18px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;border:none;border-radius:12px;font-size:18px;font-weight:700;cursor:pointer;transition:all .3s;text-decoration:none;text-align:center;margin-top:24px}
+    .bundle-btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(122,162,255,.4)}
 
     /* Pricing Section */
-    .pricing-section{padding:80px 20px 120px;background:linear-gradient(180deg,rgba(15,17,21,.5),var(--bg))}
+    .pricing-section{padding:80px 20px 120px;background:linear-gradient(180deg,rgba(122,162,255,.03),var(--bg))}
     .pricing-container{max-width:1200px;margin:0 auto}
     .pricing-header{text-align:center;margin-bottom:40px}
     .pricing-header h2{font-size:clamp(32px,5vw,48px);margin:0 0 16px 0;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -65,7 +148,7 @@
     .pricing-card.featured{border:2px solid var(--accent);box-shadow:0 8px 32px rgba(122,162,255,.2);transform:scale(1.05)}
     .pricing-card.featured:hover{transform:scale(1.05) translateY(-8px)}
     
-    .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent),var(--accent2));color:var(--bg);padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.5px}
+    .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--accent),var(--accent2));color:white;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.5px}
     .badge.lifetime{background:linear-gradient(90deg,#a78bfa,var(--accent2))}
     
     .plan-header{text-align:center;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.05)}
@@ -88,16 +171,16 @@
     
     .pricing-footer{text-align:center;margin-top:60px;color:var(--muted);font-size:14px;max-width:700px;margin-left:auto;margin-right:auto}
 
+    footer{text-align:center;padding:60px 20px 40px;color:var(--muted);font-size:14px;border-top:1px solid rgba(255,255,255,.05)}
+
     /* Modal Styles */
     .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.85);backdrop-filter:blur(8px);z-index:1000;overflow-y:auto;padding:40px 20px}
     .modal.active{display:flex;align-items:flex-start;justify-content:center}
     .modal-content{background:linear-gradient(180deg,#12141a,#0b0d12);border:1px solid rgba(255,255,255,.1);border-radius:20px;max-width:1400px;width:100%;margin:auto;position:relative;padding:0;animation:modalSlideIn .3s ease-out}
     @keyframes modalSlideIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     .modal-header{position:relative;border-radius:20px 20px 0 0;overflow:hidden}
-    .modal-header img{width:100%;height:auto;display:block;border-bottom:1px solid rgba(255,255,255,.1);cursor:zoom-in;image-rendering:auto;transition:opacity .2s}
+    .modal-header img{width:100%;height:auto;display:block;border-bottom:1px solid rgba(255,255,255,.1);cursor:zoom-in;transition:opacity .2s}
     .modal-header img:hover{opacity:.9}
-    .modal-header::after{content:"Click image to view full size";position:absolute;bottom:10px;right:10px;background:rgba(0,0,0,.8);color:var(--muted);padding:6px 12px;border-radius:6px;font-size:12px;opacity:0;transition:opacity .3s;pointer-events:none}
-    .modal-header:hover::after{opacity:1}
     .modal-close{position:absolute;top:20px;right:20px;width:40px;height:40px;background:rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.2);border-radius:50%;color:var(--text);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
     .modal-close:hover{background:rgba(255,255,255,.1);border-color:var(--accent);transform:rotate(90deg)}
     .modal-body{padding:40px}
@@ -110,28 +193,44 @@
     .modal-section li{color:var(--muted);padding:10px 0 10px 28px;position:relative;line-height:1.6}
     .modal-section li:before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:bold}
 
-    /* Responsive Modal Styles */
+    /* Responsive */
     @media (max-width: 768px) {
       header{padding:16px 20px}
       .logo{height:36px}
       .brand-text{font-size:16px}
       nav a{margin-left:12px;font-size:14px}
       
+      .showcase-section{min-height:600px}
+      .carousel-container{height:420px;perspective:900px}
+      .carousel-track{animation:rotate3d 30s linear infinite}
+      .carousel-container:hover .carousel-track{animation-play-state:paused}
+      .showcase-card{width:260px;height:220px;margin-left:-130px;margin-top:-110px;padding:16px}
+      .showcase-card:nth-child(1){transform:rotateY(0deg) translateZ(450px)}
+      .showcase-card:nth-child(2){transform:rotateY(60deg) translateZ(450px)}
+      .showcase-card:nth-child(3){transform:rotateY(120deg) translateZ(450px)}
+      .showcase-card:nth-child(4){transform:rotateY(180deg) translateZ(450px)}
+      .showcase-card:nth-child(5){transform:rotateY(240deg) translateZ(450px)}
+      .showcase-card:nth-child(6){transform:rotateY(300deg) translateZ(450px)}
+      .showcase-card:hover{transform:translateZ(60px) scale(1.05)}
+      .showcase-card-image{height:110px}
+      .playbook-card-simple{height:110px;font-size:36px}
+      .showcase-card h3{font-size:15px}
+      .showcase-card p{font-size:12px}
+      
+      .education-grid{grid-template-columns:1fr;gap:24px}
+      .book-icon{height:200px}
+      
+      .bundle-grid{grid-template-columns:1fr;gap:24px}
+      .bundle-pricing{position:static}
+      
       .modal{padding:20px 10px}
-      .modal-content{max-width:100%;margin:20px 0}
+      .modal-content{margin:20px 0}
       .modal-body{padding:24px}
       .modal-body h2{font-size:24px}
-      .modal-section h3{font-size:18px}
-      .modal-close{top:10px;right:10px;width:36px;height:36px;font-size:20px}
+      .modal-header h2{font-size:32px !important}
       
-      .pricing-section{padding:60px 20px 80px}
-      .pricing-benefits{flex-direction:column;align-items:stretch}
-      .pricing-grid{grid-template-columns:1fr;gap:24px}
-      .pricing-card.featured{transform:scale(1);border-width:2px}
-      .pricing-card.featured:hover{transform:translateY(-8px)}
-      .price .amount{font-size:40px}
-      
-      .item-image::after{font-size:12px;padding:6px 12px}
+      .pricing-grid{grid-template-columns:1fr}
+      .pricing-card.featured{transform:scale(1)}
     }
   </style>
 </head>
@@ -143,83 +242,218 @@
     </a>
     <nav>
       <a href="/">Home</a>
-      <a href="#catalog">Catalog</a>
+      <a href="#showcase">Products</a>
+      <a href="#education">Education</a>
+      <a href="#bundle">Complete System</a>
       <a href="#pricing">Pricing</a>
       <a href="https://anthony.trade" target="_blank">About</a>
       <a href="https://members.anthonyslab.shop/account" data-memberful-account>Account</a>
-      <a href="mailto:support@anthony.trade">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Institutional Levels. Zero Guesswork.</h2>
-    <p>Professional-grade TradingView indicators built for precision and execution — not patterns or noise.</p>
+    <h2>The Complete Trading System</h2>
+    <p>Professional indicators + institutional-grade education.<br>Everything you need to trade NQ/ES futures with precision and confidence.</p>
+    <div class="subtext">4 Professional Indicators • 2 Complete Playbooks • 1 Proven System</div>
   </section>
 
-  <main id="catalog" class="catalog">
-    <!-- Volatility Stars -->
-    <div class="item">
-      <div class="item-image" onclick="openModal('modal-volatility')">
-        <img src="Volatilitystars.png" alt="Volatility Stars — synchronized volatility spike highlights" />
-      </div>
-      <div class="info">
-        <h3>Volatility Stars</h3>
-        <p><strong>Increased Volatility = Institutional Hedging.</strong> Highlights synchronized equity‑volatility spikes in real time, surfacing moments of broad risk stress. Clean star markers keep charts readable while calling out conditions that often precede sharp repricings. Optional single‑gauge pings for nuance; designed to complement, not crowd, execution.</p>
-        <button class="btn" onclick="openModal('modal-volatility')">Learn More</button>
+  <!-- Animated Product Showcase -->
+  <section id="showcase" class="showcase-section">
+    <div class="showcase-header">
+      <h2>What You Get</h2>
+      <p>A complete ecosystem of indicators and education, not just isolated tools</p>
+      <div class="hint">Click any product to learn more</div>
+    </div>
+    
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <div class="showcase-card" onclick="openModal('modal-volatility')">
+          <span class="tag">INDICATOR</span>
+          <img src="Volatilitystars.png" alt="Volatility Stars" class="showcase-card-image">
+          <h3>Volatility Stars</h3>
+          <p>Institutional hedging activity detection</p>
+        </div>
+        <div class="showcase-card" onclick="openModal('modal-expansion')">
+          <span class="tag">INDICATOR</span>
+          <img src="ExpansionZones.png" alt="Expansion Zones" class="showcase-card-image">
+          <h3>Expansion Zones</h3>
+          <p>Statistical range projections</p>
+        </div>
+        <div class="showcase-card" onclick="openModal('modal-vwap')">
+          <span class="tag">INDICATOR</span>
+          <img src="VWAP.png" alt="VWAP Engine" class="showcase-card-image">
+          <h3>VWAP Engine Pro</h3>
+          <p>Multi-timeframe VWAP framework</p>
+        </div>
+        <div class="showcase-card" onclick="openModal('modal-candle')">
+          <span class="tag">INDICATOR</span>
+          <img src="CandleCharacter.png" alt="Candle Character" class="showcase-card-image">
+          <h3>Candle Character Pro</h3>
+          <p>Orderflow pattern detection</p>
+        </div>
+        <div class="showcase-card" onclick="openModal('modal-scalping')">
+          <span class="tag">PLAYBOOK</span>
+          <div class="playbook-card-simple">📖</div>
+          <h3>Scalping Playbook</h3>
+          <p>4 mechanical setups for intraday execution</p>
+        </div>
+        <div class="showcase-card" onclick="openModal('modal-scaling')">
+          <span class="tag">PLAYBOOK</span>
+          <div class="playbook-card-simple">📈</div>
+          <h3>Multi-Account Scaling</h3>
+          <p>Business plan for prop firm traders</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Expansion Zones -->
-    <div class="item">
-      <div class="item-image" onclick="openModal('modal-expansion')">
-        <img src="ExpansionZones.png" alt="Expansion Zones — statistical range boundaries" />
-      </div>
-      <div class="info">
-        <h3>Expansion Zones ("Rainbows")</h3>
-        <p><strong>The Daily Range Has Statistical Boundaries.</strong> Projects sigma-based expansion zones from the open, revealing where institutional desks expect rotation, rejection, or exhaustion. Tracks consecutive expansion days, asymmetric skew, and percentile thresholds to surface high-probability reversals and continuations before they're obvious. Visual clarity meets statistical rigor — know when you're trading edge or noise.</p>
-        <button class="btn" onclick="openModal('modal-expansion')">Learn More</button>
-      </div>
+  <!-- Education Library Section -->
+  <section id="education" class="education-section">
+    <div class="education-header">
+      <h2>Education Library</h2>
+      <p>Indicators without education are just lines on a chart. Our playbooks teach you how to actually use them.</p>
+      <span class="highlight">Included with every subscription — no upsells, no separate courses to buy.</span>
+      <div class="hint" style="margin-top:12px">Click any playbook to see full table of contents</div>
     </div>
+    
+    <div class="education-grid">
+      <div class="book-card" onclick="openModal('modal-scalping')">
+        <div class="book-icon">
+          <span class="book-badge">23 PAGES</span>
+        </div>
+        <div class="book-content">
+          <h3>Institutional Level Scalping Playbook</h3>
+          <p class="pages">Complete mechanical trading system</p>
+          <p>The exact 4-setup system for scalping NQ/ES futures using VWAP standard deviation bands and Volume Profile confluence. No discretion, no guesswork — just mechanical rules for entry, exit, position sizing, and risk management.</p>
+          <ul class="book-features">
+            <li>4 core setups with exact confluence requirements</li>
+            <li>Position sizing for 10 MNQ standard + scaling rules</li>
+            <li>Time stop framework (your secret weapon)</li>
+            <li>Market state recognition (balanced vs trending)</li>
+            <li>Trading session guide (when to trade each window)</li>
+            <li>Common mistakes & corrections</li>
+            <li>Pre-market routine & post-trade review</li>
+          </ul>
+        </div>
+      </div>
 
-    <!-- VWAP Engine Pro -->
-    <div class="item">
-      <div class="item-image" onclick="openModal('modal-vwap')">
-        <img src="VWAP.png" alt="VWAP Engine Pro" />
-      </div>
-      <div class="info">
-        <h3>VWAP Engine Pro</h3>
-        <p><strong>VWAP Isn't Just One Line — It's a Framework.</strong> Complete multi-timeframe VWAP system with rolling execution levels, anchored session VWAPs with deviation bands, and extended closes for tracking naked institutional levels. Built for traders who use VWAP as structure, not decoration. Customizable anchoring, clean metrics, and visual clarity across every session and timeframe you need.</p>
-        <button class="btn" onclick="openModal('modal-vwap')">Learn More</button>
+      <div class="book-card" onclick="openModal('modal-scaling')">
+        <div class="book-icon">
+          <span class="book-badge">23 PAGES</span>
+        </div>
+        <div class="book-content">
+          <h3>Multi-Account Scaling Strategy</h3>
+          <p class="pages">Business plan for prop firm traders</p>
+          <p>How to manage 5+ simultaneous prop firm accounts to build a $5,000-20,000/month income stream. Complete roadmap from evaluation phase through payout optimization, with realistic income projections and risk management across multiple accounts.</p>
+          <ul class="book-features">
+            <li>Managing 5x $50k accounts ($250k total book)</li>
+            <li>Evaluation to PA phase strategy</li>
+            <li>Multi-account execution framework</li>
+            <li>Payout timing & optimization</li>
+            <li>Weekly/monthly income targets</li>
+            <li>Risk management across accounts</li>
+            <li>Path to first $5-7.5k payout</li>
+          </ul>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- Candle Character Pro -->
-    <div class="item">
-      <div class="item-image" onclick="openModal('modal-candle')">
-        <img src="CandleCharacter.png" alt="Candle Character" />
+  <!-- Complete System Bundle -->
+  <section id="bundle" class="bundle-section">
+    <div class="bundle-container">
+      <div class="bundle-hero">
+        <h2>The Complete Anthony's Lab System</h2>
+        <p>Most traders buy indicators and figure it out themselves. We give you the indicators AND teach you exactly how to trade with them.</p>
+        <div class="value">Indicators + Education + Community = Complete Trading System</div>
       </div>
-      <div class="info">
-        <h3>Candle Character Pro</h3>
-        <p><strong>Detects absorption and momentum conditions visually to improve entry timing and trade confidence.</strong> Color-codes failed breakouts, inside bars, and Judas patterns directly on your chart for faster orderflow reading.</p>
-        <button class="btn" onclick="openModal('modal-candle')">Learn More</button>
+      
+      <div class="bundle-grid">
+        <div class="bundle-showcase">
+          <div class="bundle-stack">
+            <div class="bundle-item" onclick="openModal('modal-volatility')">
+              <div class="bundle-item-header">
+                <div class="bundle-item-icon">📊</div>
+                <h4>Volatility Stars</h4>
+              </div>
+              <p>Track institutional hedging activity with synchronized VIX/VXN spike detection</p>
+            </div>
+            <div class="bundle-item" onclick="openModal('modal-expansion')">
+              <div class="bundle-item-header">
+                <div class="bundle-item-icon">🌈</div>
+                <h4>Expansion Zones</h4>
+              </div>
+              <p>Statistical range projections with sigma-based zones and exhaustion signals</p>
+            </div>
+            <div class="bundle-item" onclick="openModal('modal-vwap')">
+              <div class="bundle-item-header">
+                <div class="bundle-item-icon">📈</div>
+                <h4>VWAP Engine Pro</h4>
+              </div>
+              <p>Multi-timeframe VWAP system with deviation bands and execution levels</p>
+            </div>
+            <div class="bundle-item" onclick="openModal('modal-candle')">
+              <div class="bundle-item-header">
+                <div class="bundle-item-icon">🕯️</div>
+                <h4>Candle Character Pro</h4>
+              </div>
+              <p>Automated pattern detection for failed breakouts and orderflow signals</p>
+            </div>
+            <div class="bundle-item">
+              <div class="bundle-item-header">
+                <div class="bundle-item-icon">📖</div>
+                <h4>Scalping Playbook</h4>
+              </div>
+              <p>23-page mechanical system with 4 core setups and complete trading rules</p>
+            </div>
+            <div class="bundle-item">
+              <div class="bundle-item-header">
+                <div class="bundle-item-icon">💼</div>
+                <h4>Scaling Strategy</h4>
+              </div>
+              <p>23-page business plan for managing multiple prop firm accounts profitably</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bundle-pricing">
+          <div class="badge">BEST VALUE</div>
+          <h3>Everything Included</h3>
+          <div class="price-display">
+            <div class="original">Individual Value: $2,000+</div>
+            <div class="bundle-price">$69<span style="font-size:24px;color:var(--muted)">/mo</span></div>
+            <div class="savings">Or $549/year (save $279)</div>
+          </div>
+          <ul class="bundle-features-list">
+            <li>✓ All 4 professional indicators</li>
+            <li>✓ 2 complete playbooks (46 pages total)</li>
+            <li>✓ Automatic TradingView access</li>
+            <li>✓ Private Discord community</li>
+            <li>✓ Regular updates & new features</li>
+            <li>✓ Priority support & setup assistance</li>
+            <li>✓ 7-day free trial (monthly plan)</li>
+          </ul>
+          <a href="https://members.anthonyslab.shop/checkout?plan=135764" class="bundle-btn" data-memberful-checkout>Start 7-Day Free Trial</a>
+          <div class="trial-note">Cancel anytime • Instant access</div>
+        </div>
       </div>
     </div>
-  </main>
+  </section>
 
   <!-- Pricing Section -->
   <section id="pricing" class="pricing-section">
     <div class="pricing-container">
       <div class="pricing-header">
-        <h2>Professional Tools. Retail Price.</h2>
-        <p>Get institutional-level indicators without institutional fees. Try monthly risk-free for 7 days.</p>
+        <h2>Simple, Transparent Pricing</h2>
+        <p>One subscription. Everything included. No hidden fees, no upsells.</p>
       </div>
 
       <div class="pricing-benefits">
-        <div class="benefit-item">✓ All 4 Professional Indicators</div>
-        <div class="benefit-item">✓ Automatic TradingView Access</div>
-        <div class="benefit-item">✓ Private Discord Community</div>
-        <div class="benefit-item">✓ Regular Updates & New Features</div>
-        <div class="benefit-item">✓ Priority Support & Setup Assistance</div>
+        <div class="benefit-item">✓ All 4 Indicators</div>
+        <div class="benefit-item">✓ 2 Complete Playbooks</div>
+        <div class="benefit-item">✓ Private Discord</div>
+        <div class="benefit-item">✓ Regular Updates</div>
+        <div class="benefit-item">✓ Priority Support</div>
       </div>
 
       <div class="pricing-grid">
@@ -233,7 +467,7 @@
             </div>
           </div>
           <div class="plan-features">
-            <div class="feature">✓ All indicators included</div>
+            <div class="feature">✓ All indicators + playbooks</div>
             <div class="feature">✓ Private Discord access</div>
             <div class="feature">✓ 7-day free trial</div>
             <div class="feature">✓ Cancel anytime</div>
@@ -254,7 +488,7 @@
             <div class="savings">Save $279 — Just $46/month</div>
           </div>
           <div class="plan-features">
-            <div class="feature">✓ All indicators included</div>
+            <div class="feature">✓ All indicators + playbooks</div>
             <div class="feature">✓ Private Discord access</div>
             <div class="feature">✓ Priority support</div>
             <div class="feature">✓ Best value per month</div>
@@ -275,18 +509,18 @@
             <div class="savings">Never pay again</div>
           </div>
           <div class="plan-features">
-            <div class="feature">✓ All indicators included</div>
+            <div class="feature">✓ All indicators + playbooks</div>
             <div class="feature">✓ Private Discord access</div>
             <div class="feature">✓ Priority support</div>
             <div class="feature">✓ Lifetime updates</div>
           </div>
           <a href="https://members.anthonyslab.shop/checkout?plan=135766" class="pricing-btn" data-memberful-checkout>Get Lifetime Access</a>
-          <div class="trial-note">One-time payment • 7-day refund policy</div>
+          <div class="trial-note">One-time payment • 7-day refund</div>
         </div>
       </div>
 
       <div class="pricing-footer">
-        <p>All plans include instant TradingView access, automatic updates, and our private Discord community.</p>
+        <p>All plans include instant access to indicators, playbooks, and private Discord community.</p>
       </div>
     </div>
   </section>
@@ -302,7 +536,7 @@
       <div class="modal-body">
         <h2>Volatility Stars</h2>
         <p class="tagline">Increased Volatility = Institutional Hedging</p>
-        <p>Highlights synchronized equity-volatility spikes in real time, surfacing moments of broad risk stress. When both VIX and VXN spike together — the "purple star" moment — it signals institutional hedging activity and often precedes sharp market repricings. Clean visual markers keep your charts readable while calling out the conditions that matter most.</p>
+        <p>Highlights synchronized equity-volatility spikes in real time, surfacing moments of broad risk stress. When both VIX and VXN spike together — the "purple star" moment — it signals institutional hedging activity and often precedes sharp market repricings.</p>
         
         <div class="modal-section">
           <h3>Key Features</h3>
@@ -311,7 +545,7 @@
             <li>Purple star signals for simultaneous equity-vol spikes</li>
             <li>Optional single-gauge pings for granular monitoring</li>
             <li>Real-time alerts for elevated risk regimes</li>
-            <li>Clean, non-intrusive chart markers designed to complement execution</li>
+            <li>Clean, non-intrusive chart markers</li>
             <li>Customizable sensitivity thresholds</li>
           </ul>
         </div>
@@ -319,12 +553,12 @@
         <div class="modal-section">
           <h3>When to Use</h3>
           <ul>
-            <li>Pre-market preparation to gauge overnight risk sentiment</li>
-            <li>Intraday risk management — know when institutions are hedging</li>
-            <li>Identifying potential reversal or acceleration zones during elevated volatility</li>
-            <li>Confirming market internals signals with volatility context</li>
-            <li>Avoiding entries during institutional repricing events</li>
-            <li>Position sizing adjustments based on volatility regime changes</li>
+            <li>Pre-market risk sentiment gauge</li>
+            <li>Intraday risk management</li>
+            <li>Reversal zone identification during elevated volatility</li>
+            <li>Confirming market internals signals</li>
+            <li>Avoiding entries during institutional repricing</li>
+            <li>Position sizing adjustments based on volatility regime</li>
           </ul>
         </div>
       </div>
@@ -426,7 +660,7 @@
       </div>
       <div class="modal-body">
         <h2>Candle Character Pro</h2>
-        <p class="tagline">Simple Visual Orderflow Reading</p>
+        <p class="tagline">Visual Orderflow Reading</p>
         <p>Automatically detects and color-codes key candlestick patterns that signal absorption, liquidity sweeps, and momentum conditions. No manual pattern hunting required — the indicator highlights failed breakouts, inside bar compression, and Judas reversal patterns directly on your chart for faster decision-making and improved entry timing.</p>
         
         <div class="modal-section">
@@ -458,10 +692,163 @@
     </div>
   </div>
 
+  <!-- Scalping Playbook Modal -->
+  <div id="modal-scalping" class="modal" onclick="closeModalOnBackdrop(event, 'modal-scalping')">
+    <div class="modal-content">
+      <div class="modal-header" style="background:linear-gradient(135deg,#667eea,#764ba2);padding:60px 40px;text-align:center">
+        <div class="modal-close" onclick="closeModal('modal-scalping')">&times;</div>
+        <h2 style="color:white;font-size:42px;margin:0 0 16px 0;text-shadow:0 2px 8px rgba(0,0,0,.3);-webkit-text-fill-color:white">Institutional Level Scalping Playbook</h2>
+        <p style="color:rgba(255,255,255,.9);font-size:20px;margin:0;text-shadow:0 1px 4px rgba(0,0,0,.2)">Complete Mechanical Trading System</p>
+        <div style="display:inline-block;margin-top:20px;background:rgba(255,255,255,.25);backdrop-filter:blur(8px);color:white;padding:8px 20px;border-radius:24px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.3)">23 PAGES</div>
+      </div>
+      <div class="modal-body">
+        <p class="tagline">Your Complete Blueprint for Scalping NQ/ES Futures</p>
+        <p>This isn't theory or discretionary trading — it's a complete mechanical system with exact rules for every decision. The playbook breaks down 4 high-probability setups using VWAP deviation bands, Volume Profile confluence, and market structure patterns. Whether you're trading 1 MNQ or 10, this system gives you the framework to execute with consistency and confidence.</p>
+        
+        <div class="modal-section">
+          <h3>The 4 Core Setups</h3>
+          <ul>
+            <li><strong>Setup 1: VWAP Deviation Extremes</strong> — Mean reversion at 2σ-4σ bands with volume confirmation</li>
+            <li><strong>Setup 2: Naked POC Rejections</strong> — High-probability bounces from untested Volume Profile levels</li>
+            <li><strong>Setup 3: Compression Breakouts</strong> — A+ quality breakouts from BPR/inside bar patterns with momentum</li>
+            <li><strong>Setup 4: Opening Range Plays</strong> — First 30-minute range exploitation with statistical edge</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Risk Management Framework</h3>
+          <ul>
+            <li><strong>Position Sizing Rules:</strong> How to scale 10 MNQ (or equivalent) based on setup quality and market conditions</li>
+            <li><strong>Time Stops:</strong> The secret weapon most scalpers ignore — knowing when to exit based on TIME, not just price</li>
+            <li><strong>Loss Limits:</strong> Daily/weekly max loss rules to protect capital and prevent emotional trading</li>
+            <li><strong>Scaling Strategy:</strong> When and how to add to winners, partial profit targets, and runners</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Market Context & Session Selection</h3>
+          <ul>
+            <li><strong>Balanced vs Trending Markets:</strong> How to identify market state and adjust setup selection</li>
+            <li><strong>Best Trading Windows:</strong> 8:30-10:00 AM, 1:30-3:00 PM EST — why these times matter</li>
+            <li><strong>Avoiding Dead Zones:</strong> When NOT to trade (lunch chop, low volume periods)</li>
+            <li><strong>Economic Calendar Management:</strong> How to navigate FOMC, NFP, CPI releases</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Complete Trading Routine</h3>
+          <ul>
+            <li><strong>Pre-Market Checklist:</strong> 15-minute routine to identify key levels and bias before the open</li>
+            <li><strong>Real-Time Execution:</strong> Exact order entry, stop placement, and target management</li>
+            <li><strong>Post-Trade Review:</strong> What to journal and how to improve through data</li>
+            <li><strong>Common Mistakes:</strong> The 7 errors that kill scalpers (and how to fix them)</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Bonus: Psychology & Discipline</h3>
+          <ul>
+            <li>How to handle losing streaks without revenge trading</li>
+            <li>The "Two Strike Rule" for emotional protection</li>
+            <li>Building confidence through consistency (not win rate)</li>
+            <li>When to take a day off vs push through</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Multi-Account Scaling Modal -->
+  <div id="modal-scaling" class="modal" onclick="closeModalOnBackdrop(event, 'modal-scaling')">
+    <div class="modal-content">
+      <div class="modal-header" style="background:linear-gradient(135deg,#f093fb,#f5576c);padding:60px 40px;text-align:center">
+        <div class="modal-close" onclick="closeModal('modal-scaling')">&times;</div>
+        <h2 style="color:white;font-size:42px;margin:0 0 16px 0;text-shadow:0 2px 8px rgba(0,0,0,.3);-webkit-text-fill-color:white">Multi-Account Scaling Strategy</h2>
+        <p style="color:rgba(255,255,255,.9);font-size:20px;margin:0;text-shadow:0 1px 4px rgba(0,0,0,.2)">Business Plan for Prop Firm Traders</p>
+        <div style="display:inline-block;margin-top:20px;background:rgba(255,255,255,.25);backdrop-filter:blur(8px);color:white;padding:8px 20px;border-radius:24px;font-size:13px;font-weight:700;border:1px solid rgba(255,255,255,.3)">23 PAGES</div>
+      </div>
+      <div class="modal-body">
+        <p class="tagline">Turn Prop Firm Trading Into a Real Business</p>
+        <p>Most traders treat prop firm accounts like lottery tickets. This playbook shows you how to build a systematic business managing 5+ accounts simultaneously to generate $5,000-20,000/month in consistent income. It's not about "hitting payouts" — it's about building a repeatable income stream with proper risk management across a portfolio of accounts.</p>
+        
+        <div class="modal-section">
+          <h3>The Multi-Account Framework</h3>
+          <ul>
+            <li><strong>Why 5 Accounts?</strong> Statistical reasoning behind portfolio size (diversification, drawdown protection, income stability)</li>
+            <li><strong>Account Selection:</strong> Which prop firms to use, account sizes ($25k, $50k, $100k), and evaluation vs PA accounts</li>
+            <li><strong>Capital Allocation:</strong> How to stagger entries across accounts to reduce correlation risk</li>
+            <li><strong>The 80/20 Rule:</strong> Why 80% of your payouts will come from 20% of your accounts (and how to prepare for it)</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Evaluation Phase Strategy</h3>
+          <ul>
+            <li><strong>Passing Efficiently:</strong> How to meet profit targets without hitting max loss or daily limits</li>
+            <li><strong>Consistency Rules:</strong> Managing the "no more than X% in a single day" requirement</li>
+            <li><strong>Time Management:</strong> Optimal evaluation timeline (don't rush, don't drag it out)</li>
+            <li><strong>When to Reset:</strong> Knowing when to cut an account loose and start fresh</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>PA Phase & Payout Optimization</h3>
+          <ul>
+            <li><strong>First Payout Strategy:</strong> Conservative approach to secure your first withdrawal ($5-7.5k target)</li>
+            <li><strong>Scaling After Payouts:</strong> How to increase size and risk after proving consistency</li>
+            <li><strong>Payout Timing:</strong> Bi-weekly vs monthly withdrawal strategies (cash flow management)</li>
+            <li><strong>Account Splits:</strong> When firms offer account splits and how to evaluate the offer</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Risk Management Across Multiple Accounts</h3>
+          <ul>
+            <li><strong>Portfolio-Level Risk:</strong> How much of your total book to risk per trade (NOT per account)</li>
+            <li><strong>Correlated Trades:</strong> Avoiding the trap of taking the same trade across all 5 accounts</li>
+            <li><strong>Staggered Entries:</strong> Time-based and price-based entry distribution</li>
+            <li><strong>Protecting Winners:</strong> How to avoid blowing up a funded account after a good run</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Income Projections & Milestones</h3>
+          <ul>
+            <li><strong>Month 1-3:</strong> Evaluation phase, 2-3 accounts funded, $0-2,000 income</li>
+            <li><strong>Month 4-6:</strong> First payouts secured, 4-5 accounts in PA, $3,000-7,000/month</li>
+            <li><strong>Month 7-12:</strong> Full portfolio active, consistent payouts, $7,000-15,000/month</li>
+            <li><strong>Year 2+:</strong> Scaling to larger accounts, $15,000-25,000/month potential</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Business Operations</h3>
+          <ul>
+            <li><strong>Tracking & Reporting:</strong> Excel/spreadsheet system to monitor all accounts</li>
+            <li><strong>Tax Planning:</strong> How to structure income (1099 vs business entity considerations)</li>
+            <li><strong>Time Management:</strong> Trading 5 accounts without burning out (batching, routines, automation)</li>
+            <li><strong>Long-Term Sustainability:</strong> Avoiding burnout, maintaining edge, continuous improvement</li>
+          </ul>
+        </div>
+
+        <div class="modal-section">
+          <h3>Common Pitfalls & How to Avoid Them</h3>
+          <ul>
+            <li>Over-trading to hit profit targets faster (patience wins)</li>
+            <li>Correlation risk (taking same trade on all accounts)</li>
+            <li>Neglecting account limits during hot streaks</li>
+            <li>Poor payout timing (taking money out too early/late)</li>
+            <li>Treating funded accounts like "house money"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div style="max-width:800px;margin:0 auto 20px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.05)">
       <p style="margin:0;color:var(--muted);font-size:14px;line-height:1.6">
-        Built by Anthony — Futures trader specializing in NQ/ES strategies. Learn more about my trading approach and mentorship at <a href="https://anthony.trade" target="_blank" style="color:var(--accent);text-decoration:none">anthony.trade</a>
+        Built by Anthony — Futures trader specializing in NQ/ES strategies. Learn more at <a href="https://anthony.trade" target="_blank" style="color:var(--accent);text-decoration:none">anthony.trade</a>
       </p>
     </div>
     © <span id="year"></span> Anthony's Lab — All rights reserved.
@@ -486,7 +873,6 @@
       }
     }
 
-    // Close modal on ESC key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         const activeModal = document.querySelector('.modal.active');
