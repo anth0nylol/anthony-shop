@@ -68,8 +68,6 @@
     .carousel-dot{width:10px;height:10px;border-radius:50%;background:rgba(122,162,255,.3);cursor:pointer;transition:all .3s;border:none;padding:0}
     .carousel-dot.active{background:var(--accent);width:28px;border-radius:5px}
     .carousel-dot:hover{background:var(--accent2)}
-    .carousel-progress{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);width:80%;height:3px;background:rgba(122,162,255,.1);border-radius:2px;overflow:hidden;opacity:.5}
-    .progress-bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;transition:width .1s linear}
 
     /* Indicators Showcase - Keep as is but lighter header */
     .showcase-section{padding:80px 20px;background:linear-gradient(180deg,rgba(15,17,21,.8),var(--bg));position:relative}
@@ -323,10 +321,6 @@
         <button class="carousel-dot" onclick="goToSlide(6)"></button>
         <button class="carousel-dot" onclick="goToSlide(7)"></button>
       </div>
-
-      <div class="carousel-progress">
-        <div class="progress-bar"></div>
-      </div>
     </div>
   </section>
 
@@ -457,19 +451,12 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Hero Carousel Script
+    // Hero Carousel Script - Manual navigation only
     let currentSlide = 0;
     const slides = document.querySelectorAll('.proof-slide');
     const dots = document.querySelectorAll('.carousel-dot');
-    const progressBar = document.querySelector('.progress-bar');
-    const slideInterval = 5000;
-    let autoPlayTimer;
-    let progressTimer;
 
     function goToSlide(index) {
-      clearInterval(autoPlayTimer);
-      clearInterval(progressTimer);
-      
       slides[currentSlide].classList.remove('active');
       dots[currentSlide].classList.remove('active');
       
@@ -477,45 +464,7 @@
       
       slides[currentSlide].classList.add('active');
       dots[currentSlide].classList.add('active');
-      
-      progressBar.style.width = '0%';
-      startProgress();
-      startAutoPlay();
     }
-
-    function nextSlide() {
-      const next = (currentSlide + 1) % slides.length;
-      goToSlide(next);
-    }
-
-    function startProgress() {
-      let progress = 0;
-      progressTimer = setInterval(() => {
-        progress += 100 / (slideInterval / 100);
-        progressBar.style.width = progress + '%';
-        if (progress >= 100) {
-          clearInterval(progressTimer);
-        }
-      }, 100);
-    }
-
-    function startAutoPlay() {
-      autoPlayTimer = setInterval(nextSlide, slideInterval);
-    }
-
-    startProgress();
-    startAutoPlay();
-
-    const carousel = document.querySelector('.proof-carousel-container');
-    carousel.addEventListener('mouseenter', () => {
-      clearInterval(autoPlayTimer);
-      clearInterval(progressTimer);
-    });
-    
-    carousel.addEventListener('mouseleave', () => {
-      startProgress();
-      startAutoPlay();
-    });
 
     // Modal functions (kept from original)
     function openModal(modalId) {
