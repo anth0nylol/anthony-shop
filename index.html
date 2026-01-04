@@ -428,8 +428,35 @@
   .close{color:rgba(233,238,251,.65);float:right;font-size:28px;font-weight:bold;cursor:pointer}
   .close:hover{color:var(--text)}
   .modal h2{margin:0 0 10px}
-  .modal p{color:var(--muted);line-height:1.6}
-  .modal ul{color:var(--muted);line-height:1.7}
+  .modal h3{margin:18px 0 8px;font-size:15px}
+  .modal p{color:var(--muted);line-height:1.6;margin:0 0 10px}
+  .modal ul{color:var(--muted);line-height:1.7;margin:6px 0 0}
+  .modal li{margin:4px 0}
+  .modal .note{
+    margin-top:14px;
+    padding:12px 14px;
+    border-radius:16px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.10);
+    color:rgba(233,238,251,.70);
+    font-size:13.5px;
+    line-height:1.55;
+  }
+  .modal .pill-mini{
+    display:inline-flex;
+    margin:4px 6px 0 0;
+    padding:6px 10px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:12px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.05);
+    color:rgba(233,238,251,.82);
+  }
+  .modal .pill-mini.accent{
+    border-color:rgba(122,162,255,.45);
+    background:rgba(122,162,255,.12);
+  }
 </style>
 </head>
 
@@ -453,7 +480,6 @@
         <a href="#pricing">Pricing</a>
       </div>
 
-      <!-- Only ONE pricing nav element now (nav-links). CTA stays as Start Trial. -->
       <div class="nav-cta">
         <a class="btn primary" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start Trial</a>
       </div>
@@ -734,73 +760,213 @@
 <div class="modal" id="modal-volatility">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-volatility')">×</span>
+
     <h2>Volatility Stars</h2>
-    <p>Institutional hedging activity detection.</p>
+    <p><strong>Institutional hedging detection.</strong> Volatility Stars identifies correlated volatility events by tracking <strong>simultaneous spikes in VIX and VXN</strong>. When both indices spike together, it’s a regime-shift signal: broad risk is being repriced, not just rotated.</p>
+
+    <h3>What the “Star” is telling you</h3>
     <ul>
-      <li>Designed for NQ/ES futures environments</li>
-      <li>Signals when volatility conditions are shifting</li>
+      <li><strong>Hedging is active:</strong> institutions are adjusting exposure; liquidity conditions and behavior shift.</li>
+      <li><strong>Decision-point context:</strong> the signal is most useful at meaningful locations (key levels, extremes, prior day arrays).</li>
+      <li><strong>Not a standalone entry:</strong> it’s a high-impact filter and context tool (when to press vs stand down).</li>
     </ul>
+
+    <h3>How to interpret it (context first)</h3>
+    <ul>
+      <li><strong>Overextended down + star:</strong> potential capitulation/hedging near lows → reversal context if price begins to stabilize.</li>
+      <li><strong>At all-time highs + star:</strong> caution signal—hedging into highs; risk of sharp repricing increases.</li>
+      <li><strong>Extreme whipsaw + star:</strong> prioritize risk control and patience; wait for volatility to compress before executing.</li>
+    </ul>
+
+    <div class="note">
+      <strong>Execution timing:</strong> the spike is the alert. Often the better execution comes <strong>after</strong> the volatility event, as price transitions from chaos into structured compression/expansion.
+    </div>
   </div>
 </div>
 
 <div class="modal" id="modal-expansion">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-expansion')">×</span>
+
     <h2>Expansion Zones</h2>
-    <p>Statistical range projections.</p>
+    <p><strong>Statistical range projections.</strong> Expansion Zones maps expected intraday delivery from the daily open using <strong>net change</strong> and standard deviation. It gives you objective “where” (targets and extremes) so you stop guessing.</p>
+
+    <h3>Core concept</h3>
     <ul>
-      <li>Projects likely expansion targets</li>
-      <li>Useful for framing stops and take-profits</li>
+      <li><strong>Net change-based:</strong> focuses on directional close relative to open (institutional execution relevance), not just high-low range.</li>
+      <li><strong>Probability zones:</strong> as price reaches higher deviations, continuation becomes less probable and risk/reward changes.</li>
     </ul>
+
+    <h3>How traders use it</h3>
+    <ul>
+      <li><strong>Objective targets:</strong> manage winners into zones (partials, runners, exit planning).</li>
+      <li><strong>Chase filter:</strong> avoid “late” entries once price is already statistically stretched.</li>
+      <li><strong>Reaction map:</strong> identify where price is likely to stall, reject, or accelerate further (context dependent).</li>
+    </ul>
+
+    <div class="note">
+      <strong>Best practice:</strong> treat zones as a <em>map</em>, not a signal. Pair them with location + confirmation (VWAP context, orderflow behavior, compression/absorption).
+    </div>
   </div>
 </div>
 
 <div class="modal" id="modal-vwap">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-vwap')">×</span>
+
     <h2>VWAP Engine Pro</h2>
-    <p>Multi-timeframe VWAP framework.</p>
+    <p><strong>The complete institutional VWAP system.</strong> VWAP Engine is built around how institutions measure execution and define fair value. It combines multi-timeframe VWAPs, deviation bands, and execution VWAPs to give you a mechanical framework for context and timing.</p>
+
+    <h3>The three VWAP components</h3>
     <ul>
-      <li>Context for mean reversion and trend</li>
-      <li>Pairs well with deviations and orderflow</li>
+      <li><strong>Extended VWAPs:</strong> “memory” levels from prior timeframe VWAP closes that often behave like support/resistance.</li>
+      <li><strong>Institutional VWAPs:</strong> multi-timeframe VWAP with deviation bands to quantify stretch and mean reversion odds.</li>
+      <li><strong>Execution VWAPs:</strong> rolling VWAPs used for reclaim/breakdown confirmation and entry timing (structure + flow).</li>
     </ul>
+
+    <h3>Deviation bands (why they matter)</h3>
+    <ul>
+      <li><strong>±1 SD:</strong> normal flow / comfort zone</li>
+      <li><strong>±2 SD:</strong> statistically stretched; mean reversion algorithms become more active</li>
+      <li><strong>±3 SD:</strong> extreme; reversal probability increases and risk is adjusted</li>
+      <li><strong>±4 SD:</strong> outlier zone (often news / structural shifts) → caution and selectivity</li>
+    </ul>
+
+    <div class="note">
+      <strong>Workflow:</strong> use VWAP Engine for <strong>location + regime</strong>, then use Orderflow+/Compression to confirm participation and execute with defined invalidation.
+    </div>
   </div>
 </div>
 
 <div class="modal" id="modal-compression">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-compression')">×</span>
+
     <h2>Compression + Absorption</h2>
-    <p>Mechanical institutional entry + expansion framework.</p>
+    <p><strong>Institutional entry mechanism.</strong> Compression ranges reveal where price is being held in a tight box while liquidity is absorbed. When the range resolves, you get a mechanical breakout/failure model with defined risk and measured expansion targets.</p>
+
+    <div style="margin-top:6px">
+      <span class="pill-mini accent">Compression</span>
+      <span class="pill-mini accent">Absorption</span>
+      <span class="pill-mini">Breakout</span>
+      <span class="pill-mini">Failure / Trap</span>
+      <span class="pill-mini">Measured Targets</span>
+    </div>
+
+    <h3>Why compression matters</h3>
     <ul>
-      <li>Identify absorption + compression zones</li>
-      <li>Rules-based breakout / failure models</li>
-      <li>Expansion targets for objective management</li>
+      <li><strong>Institutions need liquidity.</strong> Large positions are built in tight ranges where the market can absorb flow.</li>
+      <li><strong>No compression = low institutional interest.</strong> Levels get wicked and price continues without structure.</li>
+      <li><strong>Compression is actionable because risk is defined.</strong> The box gives you invalidation and measured expansion.</li>
     </ul>
+
+    <h3>What the indicator provides</h3>
+    <ul>
+      <li><strong>Clear compression boundaries</strong> (risk framework + decision point)</li>
+      <li><strong>Directional bias</strong> based on participation during the range</li>
+      <li><strong>Measured expansion targets</strong> projected from the compression range</li>
+      <li><strong>Breakout grading</strong> to prioritize stronger, higher-quality resolves</li>
+    </ul>
+
+    <h3>Two primary trade models</h3>
+    <ul>
+      <li><strong>Regular breakout:</strong> range resolves and closes with acceptance → trade in the direction of the break with box-structured invalidation.</li>
+      <li><strong>Failure / “BPR” model:</strong> initial break fails (trap) → reversal breaks the opposite side and expands with fuel from trapped participants.</li>
+    </ul>
+
+    <div class="note">
+      <strong>How it pairs:</strong> Use VWAP Engine for location, then confirm participation with Orderflow+ (absorption/expansion behavior). The better the location + compression quality, the cleaner the expansion.
+      <br/><br/>
+      <strong>Also included in your library:</strong> Absorption Detection expands this concept by automatically marking compression boxes after consecutive absorption prints and projecting OTE/targets (available in Discord).
+    </div>
   </div>
 </div>
 
 <div class="modal" id="modal-orderflow">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-orderflow')">×</span>
+
     <h2>Orderflow+</h2>
-    <p>Real-time institutional orderflow classification.</p>
+    <p><strong>Real-time institutional orderflow classification.</strong> Orderflow+ classifies bars by the relationship between <strong>volume</strong> and <strong>price range</strong>, so you can instantly see whether the market is expanding, absorbing, quiet, or in normal two-way flow.</p>
+
+    <h3>Core classifications</h3>
     <ul>
-      <li>Volume + price behavior classification</li>
-      <li>Includes rejection candle logic (previously Candle Character Pro)</li>
+      <li><strong>High Volume (Blue):</strong> expansion bar — participation is driving direction.</li>
+      <li><strong>Absorption (Red):</strong> high volume with tight range — institutions absorbing flow (key edge).</li>
+      <li><strong>Low Volume (Yellow):</strong> minimal participation — dead zones / low quality conditions.</li>
+      <li><strong>Normal Volume (Gray):</strong> baseline flow — healthy trends often show mostly gray with periodic blue.</li>
     </ul>
+
+    <h3>Rejection candles</h3>
+    <ul>
+      <li><strong>Rejection Candle (Lime):</strong> wick/close structure showing clean rejection of highs/lows.</li>
+      <li>When this triggers, it <strong>overrides volume color</strong> so reversal prints are visually obvious at key locations.</li>
+    </ul>
+
+    <h3>How traders use it (mechanical)</h3>
+    <ul>
+      <li><strong>Spot absorption early:</strong> repeated red prints at a level = real positioning, not random noise.</li>
+      <li><strong>Confirm acceptance:</strong> blue prints during breakout = participation is pushing through the range.</li>
+      <li><strong>Avoid chop:</strong> low-quality flow (yellow) is usually not worth forcing trades into.</li>
+      <li><strong>Validate reversal location:</strong> rejection candles at VWAP extremes / expansion extremes increase setup quality.</li>
+    </ul>
+
+    <div class="note">
+      <strong>Also included in your library:</strong> Candle Character patterns (inside/valid/failed breakouts and “Judas” sweeps) add another layer of confirmation to reversal and trap setups (available in Discord).
+    </div>
   </div>
 </div>
 
 <div class="modal" id="modal-scalping">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-scalping')">×</span>
+
     <h2>Institutional Level Scalping Playbook</h2>
-    <p>Step-by-step NQ/ES scalping model with execution rules, examples, and checklists.</p>
+    <p><strong>Rules-based execution model</strong> for NQ/ES designed to remove discretion. It standardizes entries, invalidation, management, and review so you’re not improvising under pressure.</p>
+
+    <h3>What’s inside</h3>
     <ul>
-      <li>Designed around confluence and mechanical execution</li>
-      <li>Clear rules for entries, stops, and targets</li>
+      <li>Setup rules and disqualifiers (when to trade vs stand down)</li>
+      <li>Entry triggers and confirmation structure</li>
+      <li>Risk framework (invalidations, stop logic, and when to cut)</li>
+      <li>Trade management templates (partials, runners, and objective target logic)</li>
     </ul>
+
+    <div class="note">
+      <strong>Member experience:</strong> the playbook is designed to be used daily — pre-session planning, execution checklists, then post-trade review using the same rules so improvement is measurable.
+    </div>
+  </div>
+</div>
+
+<!-- Optional: Unlinked modals (available in Discord, not separate cards on homepage) -->
+<div class="modal" id="modal-absorption">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-absorption')">×</span>
+    <h2>Absorption Detection (Library)</h2>
+    <p><strong>Auto-mark compression zones.</strong> Detects sustained absorption by requiring consecutive absorption prints, then boxes the range and projects expansion structure (targets + retracement framework).</p>
+    <h3>What it adds</h3>
+    <ul>
+      <li>Automatically marks a compression range after confirmed absorption sequences</li>
+      <li>Projects measured expansion structure</li>
+      <li>Includes a retracement framework inside the range for pullback entries</li>
+    </ul>
+    <div class="note">This tool is included in the Discord library. It’s conceptually integrated into your Compression + Absorption framework.</div>
+  </div>
+</div>
+
+<div class="modal" id="modal-candlecharacter">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('modal-candlecharacter')">×</span>
+    <h2>Candle Character (Library)</h2>
+    <p><strong>Pattern classification for traps and acceptance.</strong> Classifies candles based on how they sweep the prior range and where they close, revealing acceptance vs rejection and trapped participants.</p>
+    <h3>Common patterns</h3>
+    <ul>
+      <li><strong>Failed Breakout:</strong> sweep then close back inside → rejection / trap</li>
+      <li><strong>Valid Breakout:</strong> sweep then close outside → acceptance</li>
+      <li><strong>Inside Bar:</strong> contraction/indecision</li>
+      <li><strong>“Judas” sweeps:</strong> liquidity taken on both sides → high signal when paired with location</li>
+    </ul>
+    <div class="note">This tool is included in the Discord library and pairs naturally with Orderflow+ and Compression models.</div>
   </div>
 </div>
 
