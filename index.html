@@ -159,7 +159,7 @@
     .carousel-arrow.prev{left:20px}
     .carousel-arrow.next{right:20px}
 
-    /* Indicators Showcase - Updated for 2x3 grid */
+    /* Indicators Showcase */
     .showcase-section{padding:80px 20px;background:linear-gradient(180deg,rgba(15,17,21,.8),var(--bg));position:relative}
     .showcase-header{text-align:center;margin-bottom:60px}
     .showcase-header h2{font-size:clamp(32px,5vw,48px);margin:0 0 16px;letter-spacing:-.5px;background:linear-gradient(135deg,#fff,rgba(122,162,255,.9));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -234,11 +234,25 @@
       backdrop-filter:blur(10px)
     }
 
-    /* What's Included card styling */
-    .included-card{border:1px dashed rgba(255,255,255,.25);background:rgba(255,255,255,.02);cursor:default}
+    /* What's Included card styling (center-aligned, full row) */
+    .included-card{
+      grid-column:1 / -1;
+      text-align:center;
+      border:1px dashed rgba(255,255,255,.25);
+      background:rgba(255,255,255,.02);
+      cursor:default;
+    }
     .included-card:hover{transform:translateY(-12px) scale(1.01)}
     .included-card .showcase-card-image{display:none}
-    .included-list{margin:12px 0 0 18px;color:var(--muted);font-size:14px;line-height:1.5}
+    .included-list{
+      display:inline-block;
+      text-align:left;
+      margin:14px auto 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.55;
+      padding-left:18px;
+    }
     .included-list li{margin:6px 0}
 
     /* Education */
@@ -419,12 +433,13 @@
           <button class="carousel-arrow prev" onclick="prevSlide()">‹</button>
           <button class="carousel-arrow next" onclick="nextSlide()">›</button>
           <div class="carousel-track" id="carouselTrack">
-            <div class="carousel-slide"><img alt="Proof 1" src="proof1.png"/></div>
-            <div class="carousel-slide"><img alt="Proof 2" src="proof2.png"/></div>
-            <div class="carousel-slide"><img alt="Proof 3" src="proof3.png"/></div>
-            <div class="carousel-slide"><img alt="Proof 4" src="proof4.png"/></div>
-            <div class="carousel-slide"><img alt="Proof 5" src="proof5.png"/></div>
-            <div class="carousel-slide"><img alt="Proof 6" src="proof6.png"/></div>
+            <div class="carousel-slide"><img alt="Proof 1" src="mff2.PNG"/></div>
+            <div class="carousel-slide"><img alt="Proof 2" src="mff1.PNG"/></div>
+            <div class="carousel-slide"><img alt="Proof 3" src="topstep.PNG"/></div>
+            <div class="carousel-slide"><img alt="Proof 4" src="topstep2.PNG"/></div>
+            <div class="carousel-slide"><img alt="Proof 5" src="testimonial2.png"/></div>
+            <div class="carousel-slide"><img alt="Proof 6" src="testimonial3.png"/></div>
+            <div class="carousel-slide"><img alt="Proof 7" src="testimonial4.png"/></div>
           </div>
           <div class="carousel-dots" id="carouselDots">
             <button class="dot active" onclick="goToSlide(0)"></button>
@@ -433,6 +448,7 @@
             <button class="dot" onclick="goToSlide(3)"></button>
             <button class="dot" onclick="goToSlide(4)"></button>
             <button class="dot" onclick="goToSlide(5)"></button>
+            <button class="dot" onclick="goToSlide(6)"></button>
           </div>
         </div>
       </div>
@@ -500,11 +516,11 @@
       <p>Step-by-step rules, examples, and execution checklists</p>
     </div>
 
-    <!-- What's Included Card -->
+    <!-- What's Included Card (centered, full row) -->
     <div class="showcase-card included-card">
       <span class="tag">INCLUDED</span>
       <h3>What’s Included</h3>
-      <p>PDF playbook for every indicator + Discord walkthroughs, presets, and examples.</p>
+      <p>Every indicator comes with a PDF on Discord — plus walkthroughs, presets, and real trade examples.</p>
       <ul class="included-list">
         <li>PDF playbook for every indicator</li>
         <li>Discord walkthroughs and updates</li>
@@ -605,7 +621,7 @@
   </div>
 </footer>
 
-<!-- MODALS (kept as-is; your existing modal content remains below) -->
+<!-- MODALS -->
 <div class="modal" id="modal-volatility">
   <div class="modal-content">
     <span class="close" onclick="closeModal('modal-volatility')">×</span>
@@ -683,10 +699,11 @@
   // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Carousel logic
+  // Carousel logic (works with any number of dots/slides)
   let currentSlide = 0;
   const track = document.getElementById("carouselTrack");
   const dots = document.querySelectorAll(".dot");
+
   function updateCarousel(){
     track.style.transform = `translateX(-${currentSlide * 100}%)`;
     dots.forEach((d,i)=>d.classList.toggle("active", i===currentSlide));
