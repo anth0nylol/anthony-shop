@@ -35,7 +35,17 @@
     }
     .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
-    .brand-dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 0 18px rgba(122,162,255,.55)}
+    /* Restored logo from your original index.html */
+    .logo{
+      width:34px;height:34px;object-fit:cover;border-radius:10px;
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow:0 0 18px rgba(122,162,255,.18);
+      flex:0 0 34px;
+    }
+    .brand-text{display:flex;flex-direction:column;line-height:1}
+    .brand-text .name{font-weight:800}
+    .brand-text .sub{font-size:12px;color:rgba(233,238,251,.6);font-weight:700;margin-top:3px}
+
     .nav-links{display:flex;align-items:center;gap:18px;color:var(--muted);font-weight:600;font-size:14px}
     .nav-links a{padding:8px 10px;border-radius:12px}
     .nav-links a:hover{background:rgba(122,162,255,.08);color:var(--text)}
@@ -129,8 +139,33 @@
     .carousel-header .hint{color:var(--muted);font-size:13px}
     .carousel{position:relative}
     .carousel-track{display:flex;transition:transform .6s cubic-bezier(0.22,1,0.36,1)}
-    .carousel-slide{min-width:100%;padding:18px;display:flex;justify-content:center;align-items:center}
-    .carousel-slide img{max-width:100%;border-radius:18px;border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 60px rgba(0,0,0,.6)}
+    .carousel-slide{
+      min-width:100%;
+      padding:16px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* FIX: constrain proof images to a reasonable, consistent size */
+    .carousel-slide img{
+      width:100%;
+      max-width:860px;
+      max-height:440px;
+      height:auto;
+      object-fit:contain;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 18px 60px rgba(0,0,0,.6);
+      background:rgba(0,0,0,.12);
+    }
+    @media(max-width:700px){
+      .carousel-slide img{
+        max-height:320px;
+        max-width:100%;
+      }
+    }
+
     .carousel-dots{display:flex;gap:8px;justify-content:center;padding:12px 0 16px}
     .dot{
       width:10px;height:10px;border-radius:50%;
@@ -343,15 +378,20 @@
 <div class="nav">
   <div class="container">
     <div class="nav-inner">
-      <div class="brand">
-        <div class="brand-dot"></div>
-        <div>Anthony’s Lab</div>
-      </div>
+      <a class="brand" href="/">
+        <img src="logo.webp" alt="Anthony's Lab" class="logo" />
+        <div class="brand-text">
+          <div class="name">Anthony’s Lab</div>
+          <div class="sub">Premium NQ/ES Suite</div>
+        </div>
+      </a>
+
       <div class="nav-links">
         <a href="#showcase">Indicators</a>
         <a href="#education">Education</a>
         <a href="#pricing">Pricing</a>
       </div>
+
       <div class="nav-cta">
         <a class="btn" href="#pricing">Pricing</a>
         <a class="btn primary" data-memberful-checkout href="https://anthonyslab.shop/checkout?plan=135764">Start Trial</a>
@@ -699,7 +739,7 @@
   // Footer year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Carousel logic (works with any number of dots/slides)
+  // Carousel logic
   let currentSlide = 0;
   const track = document.getElementById("carouselTrack");
   const dots = document.querySelectorAll(".dot");
