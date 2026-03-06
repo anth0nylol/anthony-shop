@@ -4,7 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Anthony's Lab - Professional Trading Indicators</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
 
 <!-- ========================= -->
   <!-- FAVICON (Browser Tab) -->
@@ -71,17 +71,16 @@
     border-bottom:1px solid rgba(255,255,255,.08);
   }
   .nav-inner{
-  display:grid;
-  grid-template-columns: 1fr auto 1fr; /* left / center / right */
-  align-items:center;
-  padding:14px 0;
-  gap:14px;
-}
+    display:grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items:center;
+    padding:14px 0;
+    gap:14px;
+  }
 
-.brand{justify-self:start;}
-.nav-links{justify-self:center;}
-.nav-cta{justify-self:end;}
-
+  .brand{justify-self:start;}
+  .nav-links{justify-self:center;}
+  .nav-cta{justify-self:end;}
 
   .brand{
     display:flex;align-items:center;gap:10px;
@@ -159,6 +158,7 @@
     .nav-cta{display:none;}
     .hamburger{display:inline-flex;}
     .mobile-menu.show{display:block;}
+    .nav-inner{grid-template-columns:1fr auto;}
   }
 
   /* HERO */
@@ -246,7 +246,6 @@
     align-items:center;
   }
 
-  /* Scaled proof images */
   .carousel-slide img{
     width:100%;
     max-width:860px;
@@ -339,6 +338,18 @@
     pointer-events:none
   }
   .showcase-card:hover::before{opacity:1}
+
+  /* Flagship card styling */
+  .showcase-card.flagship{
+    border-color:rgba(122,162,255,.35);
+    background:linear-gradient(145deg,rgba(122,162,255,.08),rgba(255,255,255,.03));
+  }
+  .showcase-card.flagship::after{
+    content:'';
+    position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);
+  }
+
   .showcase-card-image{
     width:100%;
     aspect-ratio:16/9;
@@ -367,6 +378,11 @@
     color:rgba(233,238,251,.9);
     backdrop-filter:blur(10px)
   }
+  .tag.flagship-tag{
+    background:linear-gradient(135deg,rgba(122,162,255,.3),rgba(155,122,255,.25));
+    border-color:rgba(122,162,255,.5);
+    color:#fff;
+  }
 
   /* What's Included card styling */
   .included-card{
@@ -389,6 +405,75 @@
   }
   .included-list li{margin:6px 0}
 
+  /* Community / Discord CTA */
+  .community-section{
+    padding:60px 0;
+    background:linear-gradient(180deg,var(--bg),rgba(15,17,21,.6));
+  }
+  .community-card{
+    max-width:800px;
+    margin:0 auto;
+    padding:40px;
+    border-radius:var(--radius);
+    background:linear-gradient(145deg,rgba(88,101,242,.12),rgba(122,162,255,.06));
+    border:1px solid rgba(88,101,242,.3);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .community-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,#5865F2,var(--accent),transparent);
+  }
+  .community-card h2{
+    margin:0 0 12px;font-size:28px;
+    background:linear-gradient(135deg,#fff,#5865F2);
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .community-card p{color:var(--muted);font-size:16px;line-height:1.6;margin:0 0 8px;max-width:600px;display:inline-block}
+  .community-features{
+    display:flex;gap:20px;justify-content:center;flex-wrap:wrap;
+    margin:20px 0 24px;
+  }
+  .community-feat{
+    display:flex;align-items:center;gap:8px;
+    padding:8px 14px;border-radius:999px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.10);
+    font-size:13.5px;font-weight:700;color:var(--muted);
+  }
+  .community-feat .feat-icon{font-size:16px}
+  .discord-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 28px;border-radius:16px;
+    background:#5865F2;
+    color:#fff;font-weight:800;font-size:15px;
+    border:none;cursor:pointer;
+    transition:.2s ease;
+  }
+  .discord-btn:hover{filter:brightness(1.1);transform:translateY(-2px);box-shadow:0 12px 36px rgba(88,101,242,.35)}
+  .discord-btn svg{width:20px;height:20px;fill:#fff}
+
+  /* YouTube CTA */
+  .youtube-callout{
+    display:flex;align-items:center;gap:14px;
+    max-width:700px;margin:16px auto 0;
+    padding:14px 18px;border-radius:16px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .youtube-callout .yt-icon{
+    width:36px;height:36px;border-radius:10px;
+    background:rgba(255,0,0,.15);
+    border:1px solid rgba(255,0,0,.3);
+    display:flex;align-items:center;justify-content:center;
+    flex:0 0 36px;
+  }
+  .youtube-callout .yt-icon svg{width:18px;height:18px;fill:#ff4444}
+  .youtube-callout .yt-text{font-size:13.5px;color:var(--muted);line-height:1.45}
+  .youtube-callout .yt-text strong{color:var(--text)}
+  .youtube-callout .yt-text a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+
   /* Pricing */
   .pricing-section{padding:90px 0 90px;background:linear-gradient(180deg,var(--bg),rgba(15,17,21,.85))}
   .pricing-header{text-align:center;margin-bottom:40px}
@@ -406,6 +491,51 @@
     overflow:hidden;
   }
   .pricing-card.featured{border-color:rgba(122,162,255,.55);box-shadow:0 24px 80px rgba(122,162,255,.18)}
+  .pricing-card.monthly-highlight{
+    border-color:rgba(46,229,157,.4);
+    background:linear-gradient(180deg, rgba(46,229,157,.08), rgba(255,255,255,.03));
+  }
+  .pricing-card.monthly-highlight .pricing-btn{
+    background:linear-gradient(135deg, rgba(46,229,157,.85), rgba(46,229,157,.65));
+    border:none;
+    color:#061018;
+    font-weight:900;
+  }
+  .pricing-card.monthly-highlight .pricing-btn:hover{
+    filter:brightness(1.1);
+    box-shadow:0 12px 36px rgba(46,229,157,.25);
+  }
+
+  /* In-card promo */
+  .card-promo{
+    margin:12px 0 0;
+    padding:12px 14px;
+    border-radius:14px;
+    background:rgba(46,229,157,.06);
+    border:1px dashed rgba(46,229,157,.35);
+    text-align:center;
+  }
+  .card-promo-label{
+    font-size:12.5px;color:var(--muted);font-weight:700;margin-bottom:6px;
+  }
+  .card-promo-code{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:6px 14px;border-radius:8px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(46,229,157,.4);
+    font-weight:900;font-size:16px;letter-spacing:2px;
+    color:var(--good);
+    cursor:pointer;
+    transition:.2s ease;
+    user-select:all;
+  }
+  .card-promo-code:hover{background:rgba(46,229,157,.12);border-color:var(--good)}
+  .card-promo-code .copy-icon{font-size:13px;opacity:.6}
+  .card-promo-result{
+    margin-top:6px;font-size:12.5px;color:rgba(233,238,251,.6);font-weight:700;
+  }
+  .card-promo-result strong{color:var(--good)}
+
   .badge{
     position:absolute;top:18px;right:18px;
     background:linear-gradient(135deg, rgba(122,162,255,.95), rgba(155,122,255,.9));
@@ -415,10 +545,46 @@
     padding:6px 10px;border-radius:999px;
   }
   .plan-header h3{margin:0 0 8px;font-size:18px}
-  .price{display:flex;align-items:baseline;gap:8px}
+  .price{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
   .amount{font-size:40px;font-weight:900;letter-spacing:-1px}
+  .amount-original{
+    font-size:22px;font-weight:700;
+    color:rgba(233,238,251,.35);
+    text-decoration:line-through;
+    text-decoration-color:rgba(255,100,100,.6);
+  }
   .period{color:var(--muted);font-weight:800}
   .savings{color:rgba(46,229,157,.92);font-weight:800;font-size:13px;margin-top:8px}
+
+  /* Promo code banner */
+  .promo-banner{
+    margin:20px 0 0;
+    padding:14px 18px;
+    border-radius:16px;
+    background:linear-gradient(135deg,rgba(46,229,157,.08),rgba(122,162,255,.08));
+    border:1px solid rgba(46,229,157,.25);
+    text-align:center;
+  }
+  .promo-banner .promo-label{
+    font-size:13px;color:var(--muted);font-weight:700;margin-bottom:6px;
+  }
+  .promo-banner .promo-code{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:8px 16px;border-radius:10px;
+    background:rgba(255,255,255,.08);
+    border:1px dashed rgba(46,229,157,.45);
+    font-weight:900;font-size:18px;letter-spacing:2px;
+    color:var(--good);
+    cursor:pointer;
+    transition:.2s ease;
+    user-select:all;
+  }
+  .promo-banner .promo-code:hover{background:rgba(46,229,157,.12);border-color:var(--good)}
+  .promo-banner .promo-code .copy-icon{font-size:14px;opacity:.6}
+  .promo-banner .promo-savings{
+    margin-top:6px;font-size:12.5px;color:rgba(233,238,251,.55);font-weight:700;
+  }
+
   .pricing-btn{
     width:100%;
     margin-top:16px;
@@ -480,10 +646,24 @@
     border-color:rgba(122,162,255,.45);
     background:rgba(122,162,255,.12);
   }
+
+  /* Copy toast */
+  .copy-toast{
+    position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);
+    padding:10px 20px;border-radius:12px;
+    background:rgba(46,229,157,.95);color:#061018;
+    font-weight:800;font-size:13px;
+    opacity:0;transition:all .3s ease;
+    pointer-events:none;z-index:100;
+  }
+  .copy-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 </style>
 </head>
 
 <body>
+
+<!-- Copy Toast -->
+<div class="copy-toast" id="copyToast">Code copied!</div>
 
 <!-- NAV -->
 <div class="nav">
@@ -499,22 +679,24 @@
 
       <div class="nav-links">
         <a href="#showcase">Indicators</a>
+        <a href="#community">Community</a>
         <a href="#pricing">Pricing</a>
       </div>
 
       <div class="nav-cta">
-        <a class="btn primary" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start Trial</a>
+        <a class="btn primary" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start Free Trial</a>
       </div>
 
-      <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">☰</button>
+      <button class="hamburger" aria-label="Open menu" onclick="toggleMobileMenu()">&#9776;</button>
     </div>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
       <a href="#showcase" onclick="closeMobileMenu()">Indicators</a>
+      <a href="#community" onclick="closeMobileMenu()">Community</a>
       <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
       <div class="mobile-cta">
-        <a class="btn primary" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start Trial</a>
+        <a class="btn primary" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start Free Trial</a>
       </div>
     </div>
   </div>
@@ -526,23 +708,23 @@
     <div class="hero-grid">
       <div>
         <div class="pill"><strong>Premium Suite</strong> for NQ/ES Futures Traders</div>
-        <h1>Trade NQ/ES Like an Institution</h1>
+        <h1>See Who's Moving Price — and Trade With Them</h1>
         <p>
-          Anthony's Lab is a private suite of professional tools and playbooks built for precision execution.
-          Built for futures traders who want mechanical rules, objective signals, and structured education.
+          Most traders see candles. Anthony's Lab shows you the mechanics underneath — auction structure, institutional orderflow, volatility regimes, and the real reasons price moves. 
+          Mechanical tools and rules-based playbooks built for precision NQ/ES execution.
         </p>
         <div class="cta-buttons">
-          <a class="btn primary" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start 7-Day Free Trial</a>
+          <a class="btn primary" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start 3-Day Free Trial</a>
           <a class="btn" href="#showcase">Explore the Suite</a>
         </div>
 
         <div class="stats">
           <div class="stat">
-            <div class="stat-number">6+</div>
+            <div class="stat-number">5+</div>
             <div class="stat-label">Premium tools</div>
           </div>
           <div class="stat">
-            <div class="stat-number">Private</div>
+            <div class="stat-number">Open</div>
             <div class="stat-label">Discord community</div>
           </div>
           <div class="stat">
@@ -563,19 +745,19 @@
               <div class="check">
                 <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
               </div>
-              <span><strong>Institutional tools</strong> for reading intent, volatility, and liquidity.</span>
+              <span><strong>Institutional tools</strong> — VWAP deviations, orderflow classification, compression detection, and volatility regimes.</span>
             </li>
             <li>
               <div class="check">
                 <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
               </div>
-              <span><strong>Mechanical playbooks</strong> with rules, examples, and execution frameworks.</span>
+              <span><strong>Mechanical playbooks</strong> with rules, examples, invalidation, and execution frameworks.</span>
             </li>
             <li>
               <div class="check">
                 <svg viewBox="0 0 24 24"><path d="M9.0 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>
               </div>
-              <span><strong>Private Discord</strong> with ongoing updates and guidance.</span>
+              <span><strong>Free Discord + education</strong> — learn the framework before you ever pay a dollar.</span>
             </li>
           </ul>
         </div>
@@ -586,12 +768,12 @@
     <div class="proof-carousel">
       <div class="carousel-wrap">
         <div class="carousel-header">
-          <h4>Proof & Results</h4>
+          <h4>Proof &amp; Results</h4>
           <div class="hint">Swipe through examples</div>
         </div>
         <div class="carousel">
-          <button class="carousel-arrow prev" onclick="prevSlide()">‹</button>
-          <button class="carousel-arrow next" onclick="nextSlide()">›</button>
+          <button class="carousel-arrow prev" onclick="prevSlide()">&#8249;</button>
+          <button class="carousel-arrow next" onclick="nextSlide()">&#8250;</button>
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-slide"><img alt="Proof 1" src="mff2.PNG"/></div>
             <div class="carousel-slide"><img alt="Proof 2" src="mff1.PNG"/></div>
@@ -626,42 +808,35 @@
   </div>
 
   <div class="indicators-grid">
-    <div class="showcase-card" onclick="openModal('modal-volatility')" style="animation-delay:0.1s">
+    <div class="showcase-card flagship" onclick="openModal('modal-vwap')" style="animation-delay:0.1s">
+      <span class="tag flagship-tag">FLAGSHIP</span>
+      <img alt="VWAP Engine" class="showcase-card-image" src="VWAP.png"/>
+      <h3>VWAP Engine</h3>
+      <p>Multi-timeframe institutional VWAP system — location, deviation bands, and execution timing in one framework.</p>
+    </div>
+
+    <div class="showcase-card flagship" onclick="openModal('modal-orderflow')" style="animation-delay:0.2s">
+      <span class="tag flagship-tag">FLAGSHIP</span>
+      <img alt="Orderflow+" class="showcase-card-image" src="CompressionAbsorption.png"/>
+      <h3>Orderflow+</h3>
+      <p>Compression detection, volume classification, absorption identification, and breakout grading — the complete orderflow execution framework.</p>
+    </div>
+
+    <div class="showcase-card" onclick="openModal('modal-volatility')" style="animation-delay:0.3s">
       <span class="tag">INDICATOR</span>
       <img alt="Volatility Stars" class="showcase-card-image" src="Volatilitystars.png"/>
       <h3>Volatility Stars</h3>
       <p>Institutional hedging activity detection</p>
     </div>
 
-    <div class="showcase-card" onclick="openModal('modal-expansion')" style="animation-delay:0.2s">
+    <div class="showcase-card" onclick="openModal('modal-expansion')" style="animation-delay:0.4s">
       <span class="tag">INDICATOR</span>
       <img alt="Expansion Zones" class="showcase-card-image" src="ExpansionZones.png"/>
       <h3>Expansion Zones</h3>
       <p>Statistical range projections</p>
     </div>
 
-    <div class="showcase-card" onclick="openModal('modal-vwap')" style="animation-delay:0.3s">
-      <span class="tag">INDICATOR</span>
-      <img alt="VWAP Engine Pro" class="showcase-card-image" src="VWAP.png"/>
-      <h3>VWAP Engine Pro</h3>
-      <p>Multi-timeframe VWAP framework</p>
-    </div>
-
-    <div class="showcase-card" onclick="openModal('modal-compression')" style="animation-delay:0.4s">
-      <span class="tag">INDICATOR</span>
-      <img alt="Compression + Absorption" class="showcase-card-image" src="CompressionAbsorption.png"/>
-      <h3>Compression + Absorption</h3>
-      <p>Mechanical institutional entry + expansion framework</p>
-    </div>
-
-    <div class="showcase-card" onclick="openModal('modal-orderflow')" style="animation-delay:0.5s">
-      <span class="tag">INDICATOR</span>
-      <img alt="Orderflow+" class="showcase-card-image" src="VolumeBars.png"/>
-      <h3>Orderflow+</h3>
-      <p>Real-time institutional orderflow classification</p>
-    </div>
-
-    <div class="showcase-card" onclick="openModal('modal-scalping')" style="animation-delay:0.6s">
+    <div class="showcase-card" onclick="openModal('modal-scalping')" style="animation-delay:0.5s">
       <span class="tag">PLAYBOOK</span>
       <div class="showcase-card-image" style="display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.04);border-radius:16px;border:1px solid rgba(255,255,255,.08);height:210px;">
         <div style="text-align:center;">
@@ -679,10 +854,45 @@
       <p>Every tool comes with the rules to trade it. No guesswork — just a structured system you can execute.</p>
       <ul class="included-list">
         <li><strong>PDF playbook for every indicator</strong> (rules, settings, examples, and use-cases)</li>
+        <li><strong>Free educational PDFs</strong> (Understanding The Auction, AMT fundamentals — available to everyone)</li>
         <li><strong>Mechanical execution frameworks</strong> (when to trade, when to stand down, and invalidation)</li>
         <li><strong>Discord walkthroughs + ongoing updates</strong> (suite changes, improvements, and Q&amp;A)</li>
         <li><strong>Preset settings + real trade examples</strong> (to speed up implementation)</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community-section" id="community">
+  <div class="container">
+    <div class="community-card">
+      <h2>Join the Community — Free</h2>
+      <p>
+        The Discord is open. Learn the framework, study the charts, and see how the tools work before you spend anything.
+        Free access to trading channels, educational content, AMT breakdowns, and guides like <strong>Understanding The Auction</strong>.
+      </p>
+      <div class="community-features">
+        <div class="community-feat"><span class="feat-icon">&#128200;</span> Daily chart discussion</div>
+        <div class="community-feat"><span class="feat-icon">&#128218;</span> Free education &amp; PDFs</div>
+        <div class="community-feat"><span class="feat-icon">&#129504;</span> AMT &amp; psychology</div>
+        <div class="community-feat"><span class="feat-icon">&#128274;</span> Paid indicator access</div>
+      </div>
+      <a class="discord-btn" href="https://discord.gg/YOUR_INVITE_LINK" target="_blank">
+        <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        Join Discord
+      </a>
+
+      <!-- YouTube callout -->
+      <div class="youtube-callout">
+        <div class="yt-icon">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </div>
+        <div class="yt-text">
+          <strong>New on YouTube</strong> — Free educational content on VWAP, volume profiles, and institutional mechanics. 
+          <a href="https://www.youtube.com/@AnthonysLab" target="_blank">Watch on YouTube &rarr;</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -692,36 +902,42 @@
   <div class="container">
     <div class="pricing-header">
       <h2>Membership</h2>
-      <p>Get access to the full suite, private Discord, and everything included with each tool.</p>
+      <p>Get access to the full indicator suite, paid Discord channels, and everything included with each tool. Free community access for everyone.</p>
     </div>
 
     <div class="pricing-grid">
       <!-- Monthly Plan -->
-      <div class="pricing-card">
+      <div class="pricing-card monthly-highlight">
+        <div class="badge" style="background:linear-gradient(135deg,rgba(46,229,157,.95),rgba(46,229,157,.75));color:#061018">FREE TRIAL</div>
         <div class="plan-header">
           <h3>Monthly</h3>
           <div class="price">
-            <span class="amount">$69</span>
+            <span class="amount">$100</span>
             <span class="period">/mo</span>
           </div>
         </div>
-        <a class="pricing-btn" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start 7-Day Free Trial</a>
-        <div class="trial-note">Card required • Cancel anytime</div>
+        <div class="card-promo">
+          <div class="card-promo-label">Launch special &mdash; $30 off recurring</div>
+          <div class="card-promo-code" onclick="copyPromoCode()" title="Click to copy">LAUNCH <span class="copy-icon">&#128203;</span></div>
+          <div class="card-promo-result">Pay <strong>$70/mo</strong> instead of $100</div>
+        </div>
+        <a class="pricing-btn" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135764">Start 3-Day Free Trial</a>
+        <div class="trial-note">Card required &bull; Cancel anytime</div>
       </div>
 
       <!-- Yearly Plan -->
       <div class="pricing-card featured">
-        <div class="badge">MOST POPULAR</div>
+        <div class="badge">BEST VALUE</div>
         <div class="plan-header">
           <h3>Yearly</h3>
           <div class="price">
             <span class="amount">$549</span>
             <span class="period">/year</span>
           </div>
-          <div class="savings">Save $279 — Just $46/month</div>
+          <div class="savings">Save $651 vs monthly &mdash; Just $46/mo</div>
         </div>
         <a class="pricing-btn" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135765">Start Yearly</a>
-        <div class="trial-note">Instant access • Best value</div>
+        <div class="trial-note">Instant access &bull; Biggest savings</div>
       </div>
 
       <!-- Lifetime -->
@@ -734,22 +950,27 @@
           </div>
         </div>
         <a class="pricing-btn" data-memberful-checkout href="https://members.anthonyslab.shop/checkout?plan=135766">Get Lifetime Access</a>
-        <div class="trial-note">One-time payment • Full access</div>
+        <div class="trial-note">One-time payment &bull; Full access forever</div>
       </div>
+    </div>
+
+    <!-- Promo Note -->
+    <div class="promo-banner" style="padding:10px 16px;">
+      <div class="promo-savings" style="margin:0">Have an affiliate code? Enter it at checkout for the same $30 off recurring discount.</div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <div>© <span id="year"></span> Anthony's Lab. All rights reserved.</div>
+    <div>&copy; <span id="year"></span> Anthony's Lab. All rights reserved.</div>
   </div>
 </footer>
 
 <!-- MODALS -->
 <div class="modal" id="modal-volatility">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('modal-volatility')">×</span>
+    <span class="close" onclick="closeModal('modal-volatility')">&times;</span>
 
     <h2>Volatility Stars</h2>
     <p><strong>Institutional hedging detection.</strong> Volatility Stars identifies correlated volatility events by tracking <strong>simultaneous spikes in VIX and VXN</strong>. When both indices spike together, it's a regime-shift signal: broad risk is being repriced, not just rotated.</p>
@@ -763,8 +984,8 @@
 
     <h3>How to interpret it (context first)</h3>
     <ul>
-      <li><strong>Overextended down + star:</strong> potential capitulation/hedging near lows → reversal context if price begins to stabilize.</li>
-      <li><strong>At all-time highs + star:</strong> caution signal—hedging into highs; risk of sharp repricing increases.</li>
+      <li><strong>Overextended down + star:</strong> potential capitulation/hedging near lows &rarr; reversal context if price begins to stabilize.</li>
+      <li><strong>At all-time highs + star:</strong> caution signal &mdash; hedging into highs; risk of sharp repricing increases.</li>
       <li><strong>Extreme whipsaw + star:</strong> prioritize risk control and patience; wait for volatility to compress before executing.</li>
     </ul>
 
@@ -776,7 +997,7 @@
 
 <div class="modal" id="modal-expansion">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('modal-expansion')">×</span>
+    <span class="close" onclick="closeModal('modal-expansion')">&times;</span>
 
     <h2>Expansion Zones</h2>
     <p><strong>Statistical range projections.</strong> Expansion Zones maps expected intraday delivery from the daily open using <strong>net change</strong> and standard deviation. It gives you objective "where" (targets and extremes) so you stop guessing.</p>
@@ -802,9 +1023,9 @@
 
 <div class="modal" id="modal-vwap">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('modal-vwap')">×</span>
+    <span class="close" onclick="closeModal('modal-vwap')">&times;</span>
 
-    <h2>VWAP Engine Pro</h2>
+    <h2>VWAP Engine</h2>
     <p><strong>The complete institutional VWAP system.</strong> VWAP Engine is built around how institutions measure execution and define fair value. It combines multi-timeframe VWAPs, deviation bands, and execution VWAPs to give you a mechanical framework for context and timing.</p>
 
     <h3>The three VWAP components</h3>
@@ -816,81 +1037,47 @@
 
     <h3>Deviation bands (why they matter)</h3>
     <ul>
-      <li><strong>±1 SD:</strong> normal flow / comfort zone</li>
-      <li><strong>±2 SD:</strong> statistically stretched; mean reversion algorithms become more active</li>
-      <li><strong>±3 SD:</strong> extreme; reversal probability increases and risk is adjusted</li>
-      <li><strong>±4 SD:</strong> outlier zone (often news / structural shifts) → caution and selectivity</li>
+      <li><strong>&pm;1 SD:</strong> normal flow / comfort zone</li>
+      <li><strong>&pm;2 SD:</strong> statistically stretched; mean reversion algorithms become more active</li>
+      <li><strong>&pm;3 SD:</strong> extreme; reversal probability increases and risk is adjusted</li>
     </ul>
 
     <div class="note">
-      <strong>Workflow:</strong> use VWAP Engine for <strong>location + regime</strong>, then use Orderflow+/Compression to confirm participation and execute with defined invalidation.
-    </div>
-  </div>
-</div>
-
-<div class="modal" id="modal-compression">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modal-compression')">×</span>
-
-    <h2>Compression + Absorption</h2>
-    <p><strong>Institutional entry mechanism.</strong> Compression ranges reveal where price is being held in a tight box while liquidity is absorbed. When the range resolves, you get a mechanical breakout/failure model with defined risk and measured expansion targets.</p>
-
-    <div style="margin-top:6px">
-      <span class="pill-mini accent">Compression</span>
-      <span class="pill-mini accent">Absorption</span>
-      <span class="pill-mini">Breakout</span>
-      <span class="pill-mini">Failure / Trap</span>
-      <span class="pill-mini">Measured Targets</span>
-    </div>
-
-    <h3>Why compression matters</h3>
-    <ul>
-      <li><strong>Institutions need liquidity.</strong> Large positions are built in tight ranges where the market can absorb flow.</li>
-      <li><strong>No compression = low institutional interest.</strong> Levels get wicked and price continues without structure.</li>
-      <li><strong>Compression is actionable because risk is defined.</strong> The box gives you invalidation and measured expansion.</li>
-    </ul>
-
-    <h3>What the indicator provides</h3>
-    <ul>
-      <li><strong>Clear compression boundaries</strong> (risk framework + decision point)</li>
-      <li><strong>Directional bias</strong> based on participation during the range</li>
-      <li><strong>Measured expansion targets</strong> projected from the compression range</li>
-      <li><strong>Breakout grading</strong> to prioritize stronger, higher-quality resolves</li>
-    </ul>
-
-    <h3>Two primary trade models</h3>
-    <ul>
-      <li><strong>Regular breakout:</strong> range resolves and closes with acceptance → trade in the direction of the break with box-structured invalidation.</li>
-      <li><strong>Failure / "BPR" model:</strong> initial break fails (trap) → reversal breaks the opposite side and expands with fuel from trapped participants.</li>
-    </ul>
-
-    <div class="note">
-      <strong>How it pairs:</strong> Use VWAP Engine for location, then confirm participation with Orderflow+ (absorption/expansion behavior). The better the location + compression quality, the cleaner the expansion.
-      <br/><br/>
-      <strong>Also included in your library:</strong> Absorption Detection expands this concept by automatically marking compression boxes after consecutive absorption prints and projecting OTE/targets (available in Discord).
+      <strong>Workflow:</strong> use VWAP Engine for <strong>location + regime</strong>, then use Orderflow+ to confirm participation and execute with defined invalidation.
     </div>
   </div>
 </div>
 
 <div class="modal" id="modal-orderflow">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('modal-orderflow')">×</span>
+    <span class="close" onclick="closeModal('modal-orderflow')">&times;</span>
 
     <h2>Orderflow+</h2>
-    <p><strong>Real-time institutional orderflow classification.</strong> Orderflow+ classifies bars by the relationship between <strong>volume</strong> and <strong>price range</strong>, so you can instantly see whether the market is expanding, absorbing, quiet, or in normal two-way flow.</p>
+    <p><strong>The complete orderflow execution framework.</strong> Orderflow+ combines compression detection, volume classification, and absorption identification into one system. It tells you <strong>what</strong> is happening (expansion, absorption, quiet, rejection) and <strong>where</strong> the mechanical entry is (compression ranges with defined risk).</p>
 
-    <h3>Core classifications</h3>
+    <div style="margin-top:6px">
+      <span class="pill-mini accent">Compression</span>
+      <span class="pill-mini accent">Volume Classification</span>
+      <span class="pill-mini accent">Absorption</span>
+      <span class="pill-mini">Breakout Grading</span>
+      <span class="pill-mini">Rejection Detection</span>
+      <span class="pill-mini">Measured Targets</span>
+    </div>
+
+    <h3>Compression detection</h3>
     <ul>
-      <li><strong>High Volume (Blue):</strong> expansion bar — participation is driving direction.</li>
-      <li><strong>Absorption (Red):</strong> high volume with tight range — institutions absorbing flow (key edge).</li>
-      <li><strong>Low Volume (Yellow):</strong> minimal participation — dead zones / low quality conditions.</li>
-      <li><strong>Normal Volume (Gray):</strong> baseline flow — healthy trends often show mostly gray with periodic blue.</li>
+      <li><strong>Institutions need liquidity.</strong> Large positions are built in tight ranges where the market can absorb flow.</li>
+      <li><strong>The box gives you invalidation and measured expansion.</strong> Compression is actionable because risk is defined.</li>
+      <li><strong>Two trade models:</strong> regular breakout (range resolves with acceptance) or failure/trap model (initial break fails, reversal expands with fuel from trapped participants).</li>
     </ul>
 
-    <h3>Rejection candles</h3>
+    <h3>Volume classification</h3>
     <ul>
-      <li><strong>Rejection Candle (Lime):</strong> wick/close structure showing clean rejection of highs/lows.</li>
-      <li>When this triggers, it <strong>overrides volume color</strong> so reversal prints are visually obvious at key locations.</li>
+      <li><strong>High Volume (Blue):</strong> expansion bar &mdash; participation is driving direction.</li>
+      <li><strong>Absorption (Red):</strong> high volume with tight range &mdash; institutions absorbing flow (key edge).</li>
+      <li><strong>Low Volume (Yellow):</strong> minimal participation &mdash; dead zones / low quality conditions.</li>
+      <li><strong>Normal Volume (Gray):</strong> baseline flow &mdash; healthy trends show mostly gray with periodic blue.</li>
+      <li><strong>Rejection Candle (Lime):</strong> wick/close structure showing clean rejection &mdash; overrides volume color at key locations.</li>
     </ul>
 
     <h3>How traders use it (mechanical)</h3>
@@ -898,18 +1085,20 @@
       <li><strong>Spot absorption early:</strong> repeated red prints at a level = real positioning, not random noise.</li>
       <li><strong>Confirm acceptance:</strong> blue prints during breakout = participation is pushing through the range.</li>
       <li><strong>Avoid chop:</strong> low-quality flow (yellow) is usually not worth forcing trades into.</li>
-      <li><strong>Validate reversal location:</strong> rejection candles at VWAP extremes / expansion extremes increase setup quality.</li>
+      <li><strong>Define risk mechanically:</strong> compression box gives you invalidation &mdash; no more arbitrary stop placement.</li>
     </ul>
 
     <div class="note">
-      <strong>Also included in your library:</strong> Candle Character patterns (inside/valid/failed breakouts and "Judas" sweeps) add another layer of confirmation to reversal and trap setups (available in Discord).
+      <strong>Workflow:</strong> Use VWAP Engine for <strong>location + regime</strong>, then Orderflow+ to confirm participation and execute with defined invalidation. The better the location + compression quality, the cleaner the expansion.
+      <br/><br/>
+      <strong>Also in the Discord library:</strong> HTF Absorption Detection (auto-marks compression zones after consecutive absorption prints with projected targets) and Candle Character (failed breakouts, valid breakouts, and "Judas" sweep patterns).
     </div>
   </div>
 </div>
 
 <div class="modal" id="modal-scalping">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('modal-scalping')">×</span>
+    <span class="close" onclick="closeModal('modal-scalping')">&times;</span>
 
     <h2>Institutional Level Scalping Playbook</h2>
     <p><strong>Rules-based execution model</strong> for NQ/ES designed to remove discretion. It standardizes entries, invalidation, management, and review so you're not improvising under pressure.</p>
@@ -923,7 +1112,7 @@
     </ul>
 
     <div class="note">
-      <strong>Member experience:</strong> the playbook is designed to be used daily — pre-session planning, execution checklists, then post-trade review using the same rules so improvement is measurable.
+      <strong>Member experience:</strong> the playbook is designed to be used daily &mdash; pre-session planning, execution checklists, then post-trade review using the same rules so improvement is measurable.
     </div>
   </div>
 </div>
@@ -931,7 +1120,7 @@
 <!-- Optional: Unlinked modals (available in Discord, not separate cards on homepage) -->
 <div class="modal" id="modal-absorption">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('modal-absorption')">×</span>
+    <span class="close" onclick="closeModal('modal-absorption')">&times;</span>
     <h2>Absorption Detection (Library)</h2>
     <p><strong>Auto-mark compression zones.</strong> Detects sustained absorption by requiring consecutive absorption prints, then boxes the range and projects expansion structure (targets + retracement framework).</p>
     <h3>What it adds</h3>
@@ -946,15 +1135,15 @@
 
 <div class="modal" id="modal-candlecharacter">
   <div class="modal-content">
-    <span class="close" onclick="closeModal('modal-candlecharacter')">×</span>
+    <span class="close" onclick="closeModal('modal-candlecharacter')">&times;</span>
     <h2>Candle Character (Library)</h2>
     <p><strong>Pattern classification for traps and acceptance.</strong> Classifies candles based on how they sweep the prior range and where they close, revealing acceptance vs rejection and trapped participants.</p>
     <h3>Common patterns</h3>
     <ul>
-      <li><strong>Failed Breakout:</strong> sweep then close back inside → rejection / trap</li>
-      <li><strong>Valid Breakout:</strong> sweep then close outside → acceptance</li>
+      <li><strong>Failed Breakout:</strong> sweep then close back inside &rarr; rejection / trap</li>
+      <li><strong>Valid Breakout:</strong> sweep then close outside &rarr; acceptance</li>
       <li><strong>Inside Bar:</strong> contraction/indecision</li>
-      <li><strong>"Judas" sweeps:</strong> liquidity taken on both sides → high signal when paired with location</li>
+      <li><strong>"Judas" sweeps:</strong> liquidity taken on both sides &rarr; high signal when paired with location</li>
     </ul>
     <div class="note">This tool is included in the Discord library and pairs naturally with Orderflow+ and Compression models.</div>
   </div>
@@ -987,6 +1176,11 @@
   function prevSlide(){currentSlide = (currentSlide - 1 + dots.length) % dots.length; updateCarousel();}
   function goToSlide(i){currentSlide = i; updateCarousel();}
 
+  // Auto-advance carousel
+  let autoPlay = setInterval(nextSlide, 5000);
+  document.querySelector('.carousel').addEventListener('mouseenter', () => clearInterval(autoPlay));
+  document.querySelector('.carousel').addEventListener('mouseleave', () => { autoPlay = setInterval(nextSlide, 5000); });
+
   // Modals
   function openModal(id){document.getElementById(id).style.display="block";}
   function closeModal(id){document.getElementById(id).style.display="none";}
@@ -995,6 +1189,15 @@
       if(event.target===m){m.style.display="none";}
     });
   };
+
+  // Copy promo code
+  function copyPromoCode(){
+    navigator.clipboard.writeText('LAUNCH').then(() => {
+      const toast = document.getElementById('copyToast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    });
+  }
 </script>
 
 </body>
