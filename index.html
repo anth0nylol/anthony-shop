@@ -48,7 +48,7 @@ nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;tra
 .btn-accent{background:var(--accent);color:var(--bg);padding:15px 36px;border-radius:100px;font-weight:600;font-size:15px;text-decoration:none;transition:all .3s}.btn-accent:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(122,162,255,.2)}
 .btn-text{color:var(--muted);font-size:15px;text-decoration:none;font-weight:500;transition:color .3s}.btn-text:hover{color:var(--accent)}
 .hero-chart{max-width:1200px;margin:-20px auto 0;padding:0 24px;position:relative}
-.hero-chart img{width:100%;height:auto;display:block;border-radius:16px;border:none;box-shadow:0 4px 60px rgba(0,0,0,.5),0 0 100px rgba(122,162,255,.04)}
+.hero-chart img,.hero-chart video{width:100%;height:auto;display:block;border-radius:16px;border:none;box-shadow:0 4px 60px rgba(0,0,0,.5),0 0 100px rgba(122,162,255,.04);image-rendering:-webkit-optimize-contrast}
 .hero-chart::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:80%;height:70%;background:radial-gradient(ellipse,rgba(122,162,255,.06) 0%,transparent 70%);pointer-events:none;z-index:-1}
 .hero-chart::after{content:'';position:absolute;bottom:0;left:24px;right:24px;height:100px;background:linear-gradient(transparent,var(--bg));border-radius:0 0 16px 16px;pointer-events:none}
 .divider{width:60px;height:1px;background:var(--border);margin:0 auto}
@@ -76,7 +76,7 @@ nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;tra
 .ind-list li{display:flex;align-items:baseline;gap:10px;font-size:14px;color:var(--muted)}.ind-list li::before{content:'·';color:var(--accent);font-size:24px;line-height:0}.ind-list li strong{color:var(--text);font-weight:500}
 .ind-visual{border-radius:16px;overflow:hidden;background:transparent;transition:all .4s;cursor:pointer;position:relative}
 .ind-visual:hover{transform:translateY(-4px)}
-.ind-visual img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 4px 40px rgba(0,0,0,.5),0 0 80px rgba(122,162,255,.03)}
+.ind-visual img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 4px 40px rgba(0,0,0,.5),0 0 80px rgba(122,162,255,.03);image-rendering:-webkit-optimize-contrast}
 .ind-visual::before{content:'';position:absolute;inset:-20px;background:radial-gradient(ellipse at center,rgba(122,162,255,.04) 0%,transparent 70%);pointer-events:none;z-index:-1;border-radius:20px}
 .ind-visual::after{content:'⤢  Expand';position:absolute;bottom:12px;right:16px;font-size:11px;color:rgba(255,255,255,.5);background:rgba(8,9,12,.7);padding:5px 12px;border-radius:8px;opacity:0;transition:opacity .3s;pointer-events:none;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.06)}.ind-visual:hover::after{opacity:1}
 .hero-chart{cursor:pointer}.hero-chart:hover img{box-shadow:0 4px 60px rgba(0,0,0,.5),0 0 120px rgba(122,162,255,.06)}
@@ -154,7 +154,10 @@ footer p{font-size:13px;color:var(--dim)}
 </section>
 
 <div class="hero-chart fade-in">
-<img src="FullConfluence.PNG" alt="Anthony's Lab indicator system on NQ futures — exhaustion, absorption, VWAP structure" loading="lazy">
+<video autoplay muted loop playsinline poster="FullConfluence.PNG">
+<source src="hero-replay.mp4" type="video/mp4">
+<img src="FullConfluence.PNG" alt="Anthony's Lab indicator system on NQ futures">
+</video>
 </div>
 
 <div class="container" style="margin-top:60px"><div class="divider"></div></div>
