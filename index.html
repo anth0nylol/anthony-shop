@@ -73,8 +73,14 @@ nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;tra
 .ind-section p{font-size:15px;color:var(--muted);line-height:1.8;margin-bottom:20px}
 .ind-list{list-style:none;display:flex;flex-direction:column;gap:10px}
 .ind-list li{display:flex;align-items:baseline;gap:10px;font-size:14px;color:var(--muted)}.ind-list li::before{content:'·';color:var(--accent);font-size:24px;line-height:0}.ind-list li strong{color:var(--text);font-weight:500}
-.ind-visual{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2);transition:border-color .3s}.ind-visual:hover{border-color:rgba(122,162,255,.15)}
+.ind-visual{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg2);transition:all .3s;cursor:pointer;position:relative}.ind-visual:hover{border-color:rgba(122,162,255,.25);transform:scale(1.01)}
 .ind-visual img{width:100%;height:auto;display:block}
+.ind-visual::after{content:'Click to expand';position:absolute;bottom:12px;right:16px;font-size:11px;color:var(--muted);background:rgba(8,9,12,.8);padding:4px 10px;border-radius:6px;opacity:0;transition:opacity .3s;pointer-events:none;backdrop-filter:blur(8px)}.ind-visual:hover::after{opacity:1}
+.hero-chart{cursor:pointer}.hero-chart:hover img{border-color:rgba(122,162,255,.2)}
+.lightbox{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:10000;background:rgba(4,5,7,.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:95vw;max-height:92vh;object-fit:contain;border-radius:12px;border:1px solid var(--border);box-shadow:0 24px 80px rgba(0,0,0,.6)}
+.lightbox-close{position:absolute;top:20px;right:28px;color:var(--muted);font-size:32px;cursor:pointer;width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:all .2s;background:rgba(255,255,255,.05);border:1px solid var(--border)}.lightbox-close:hover{color:var(--text);background:rgba(255,255,255,.1)}
 .ind-visual-placeholder{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:14px;font-style:italic;padding:40px}
 .proof-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .proof-grid{display:flex;gap:16px;margin-top:40px;overflow-x:auto;padding-bottom:16px;-webkit-overflow-scrolling:touch}
@@ -342,6 +348,12 @@ footer p{font-size:13px;color:var(--dim)}
 </div>
 </footer>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<span class="lightbox-close" onclick="closeLightbox()">×</span>
+<img id="lightbox-img" src="" alt="Expanded view">
+</div>
+
 <script>
 const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
@@ -353,6 +365,33 @@ const dots=slider.parentElement.querySelectorAll('.slide-dot');
 imgs.forEach((img,i)=>{img.classList.toggle('active',i===idx)});
 dots.forEach((dot,i)=>{dot.classList.toggle('active',i===idx)});
 }
+
+// Lightbox
+function openLightbox(src){
+document.getElementById('lightbox-img').src=src;
+document.getElementById('lightbox').classList.add('open');
+document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+document.getElementById('lightbox').classList.remove('open');
+document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+
+// Attach lightbox to all chart images
+document.querySelectorAll('.ind-visual img, .hero-chart img').forEach(img=>{
+img.addEventListener('click',e=>{
+e.stopPropagation();
+openLightbox(img.src);
+});
+});
+// Attach to slide-show images too
+document.querySelectorAll('.slide-show img').forEach(img=>{
+img.addEventListener('click',e=>{
+e.stopPropagation();
+openLightbox(img.src);
+});
+});
 </script>
 </body>
 </html>
