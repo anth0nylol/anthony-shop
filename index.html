@@ -89,9 +89,17 @@ nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;tra
 .lb-counter{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:13px;color:var(--dim);z-index:10001}
 .ind-visual-placeholder{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:14px;font-style:italic;padding:40px}
 .proof-section{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.proof-grid{display:flex;gap:16px;margin-top:40px;overflow-x:auto;padding-bottom:16px;-webkit-overflow-scrolling:touch}
-.proof-grid::-webkit-scrollbar{height:4px}.proof-grid::-webkit-scrollbar-track{background:var(--bg)}.proof-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.proof-img{flex:0 0 auto;width:280px;border-radius:12px;overflow:hidden;background:var(--bg);border:1px solid var(--border)}.proof-img img{width:100%;height:100%;display:block;object-fit:cover}
+.proof-layout{display:grid;grid-template-columns:1fr 300px;gap:40px;margin-top:48px;align-items:start}
+.quotes{display:flex;flex-direction:column;gap:20px}
+.quote-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px 32px;transition:border-color .3s}
+.quote-card:hover{border-color:rgba(122,162,255,.15)}
+.quote-text{font-size:15px;color:var(--muted);line-height:1.75;font-style:italic;margin-bottom:16px}
+.quote-text em{font-style:normal;color:var(--text);font-weight:500}
+.quote-attr{display:flex;align-items:center;gap:10px}
+.quote-name{font-size:13px;font-weight:600;color:var(--text)}
+.quote-role{font-size:12px;color:var(--dim)}
+.quote-dot{width:4px;height:4px;border-radius:50%;background:var(--accent)}
+.proof-payout{border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg)}.proof-payout img{width:100%;height:auto;display:block}
 .comm-box{margin-top:56px;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .comm-features{list-style:none;display:flex;flex-direction:column;gap:14px}
 .comm-features li{font-size:15px;color:var(--muted);display:flex;align-items:center;gap:10px}.comm-features li::before{content:'✦';color:var(--accent);font-size:10px}
@@ -115,7 +123,7 @@ footer p{font-size:13px;color:var(--dim)}
 .slide-show{position:relative}.slide-show img{width:100%;height:auto;display:block;position:absolute;top:0;left:0;opacity:0;transition:opacity .5s ease}.slide-show img.active{position:relative;opacity:1}
 .slide-dots{display:flex;justify-content:center;gap:8px;padding:12px 0}.slide-dot{width:8px;height:8px;border-radius:50%;background:var(--border);border:none;cursor:pointer;transition:background .3s;padding:0}.slide-dot.active{background:var(--accent)}
 @media(max-width:900px){.ear-flow{grid-template-columns:1fr;gap:16px}.ear-arrow{transform:rotate(90deg);padding:8px 0}.ear-number{display:none}}
-@media(max-width:768px){.container{padding:0 24px}nav .inner{padding:16px 24px}nav ul{display:none}.hero{padding:140px 0 80px}.ind-section,.ind-section.reverse{grid-template-columns:1fr;direction:ltr}.ind-visual{order:-1}.comm-box{grid-template-columns:1fr;padding:36px 28px}.pricing-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}.proof-img{width:220px}}
+@media(max-width:768px){.container{padding:0 24px}nav .inner{padding:16px 24px}nav ul{display:none}.hero{padding:140px 0 80px}.ind-section,.ind-section.reverse{grid-template-columns:1fr;direction:ltr}.ind-visual{order:-1}.comm-box{grid-template-columns:1fr;padding:36px 28px}.pricing-grid{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}.proof-layout{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -267,14 +275,24 @@ footer p{font-size:13px;color:var(--dim)}
 <h2>Real trades. <em>Real payouts.</em></h2>
 <p class="lead">Funded accounts, passed evaluations, and community results. <a href="testimonials.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px">See all testimonials →</a></p>
 </div>
-<div class="proof-grid fade-in">
-<div class="proof-img"><img src="mff2.PNG" alt="Funded payout" loading="lazy"></div>
-<div class="proof-img"><img src="mff1.PNG" alt="Funded payout" loading="lazy"></div>
-<div class="proof-img"><img src="topstep.PNG" alt="Topstep funded" loading="lazy"></div>
-<div class="proof-img"><img src="topstep2.PNG" alt="Topstep funded" loading="lazy"></div>
-<div class="proof-img"><img src="testimonial2.png" alt="Testimonial" loading="lazy"></div>
-<div class="proof-img"><img src="testimonial3.png" alt="Testimonial" loading="lazy"></div>
-<div class="proof-img"><img src="testimonial4.png" alt="Testimonial" loading="lazy"></div>
+<div class="proof-layout fade-in">
+<div class="quotes">
+<div class="quote-card">
+<div class="quote-text">"Ever since ant put me onto orderflow I've been <em>consistently making money every month</em>. My consistency wasn't great and payouts were hard to come by even tho I was nearly 2 years deep. One more green day and this will be my <em>third month in a row where I've achieved 10k</em>."</div>
+<div class="quote-attr"><div class="quote-dot"></div><span class="quote-name">Keo</span><span class="quote-role">Discord Member</span></div>
+</div>
+<div class="quote-card">
+<div class="quote-text">"Trading is pretty lonely so I'm really grateful to Anthony for making this great community. <em>My psychology is better now</em> that I have people to talk to. Also the indicators are great."</div>
+<div class="quote-attr"><div class="quote-dot"></div><span class="quote-name">Trinh</span><span class="quote-role">Discord Member</span></div>
+</div>
+<div class="quote-card">
+<div class="quote-text">"<em>+19k day today using nothing but Anthony's indicators.</em> 5k x2, 3k x3 + win streak from last week."</div>
+<div class="quote-attr"><div class="quote-dot"></div><span class="quote-name">Matt</span><span class="quote-role">Discord Member</span></div>
+</div>
+</div>
+<div class="proof-payout">
+<img src="topstep_payout.png" alt="Topstep $5,000 payout" loading="lazy">
+</div>
 </div>
 </div>
 </section>
