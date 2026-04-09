@@ -171,7 +171,7 @@ footer p{font-size:13px;color:var(--dim)}
 <div class="comparison-frame" onclick="if(this.querySelector('video')){let v=this.querySelector('video');v.paused?v.play():v.pause()}">
 <div class="vid-label left">TradingView · Volume Bars</div>
 <div class="vid-label right">Sierra Chart · Footprint</div>
-<video id="heroVid" autoplay muted loop playsinline poster="FullConfluence.PNG">
+<video autoplay muted loop playsinline poster="FullConfluence.PNG">
 <source src="WebsiteHeader.mp4" type="video/mp4">
 <img src="FullConfluence.PNG" alt="TradingView Volume Bars vs Sierra Chart Footprint — same orderflow, same candle">
 </video>
@@ -421,7 +421,6 @@ footer p{font-size:13px;color:var(--dim)}
 </div>
 
 <script>
-document.getElementById('heroVid').playbackRate=8.0;
 const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
 
